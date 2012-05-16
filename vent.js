@@ -70,7 +70,7 @@ VENT.utilities = {
      */
 
     randomInt: function randomInt(min, max) {
-        if (min && max) {
+        if (min !== undefined && max !== undefined) {
             return Math.floor((max - min) * Math.random()) + min;
         } else { VENT.warn("utilities.randomInt() Error: Missing min or max argument."); }
         return false;
@@ -125,7 +125,7 @@ VENT.utilities = {
 
     /**
      * @description Validates if the argument is a point, an object with 'x' and 'y' properties.
-     * @param point {Object} The object to test.
+     * @param point {Object} The object to samples.
      * @return {Boolean}
      */
 
@@ -152,12 +152,9 @@ VENT.renderer = (function() {
 
     _list = [];
     _len = 0;
-    //_interval = 33;
-    _interval = 1000;
+    _interval = 33;
 
     function _loop() {
-        console.log("Render");
-        console.log(VENT.performance.getDelta());
         for (var i = 0; i < _len; i++) { _list[i](); }
         setTimeout(_loop, _interval);
     }
@@ -174,7 +171,7 @@ VENT.renderer = (function() {
     }
 
     function _setFPS(fps) {
-        _renderInterval = Math.floor(1000 / fps);
+        _interval = Math.floor(1000 / fps);
     }
 
     _loop();
@@ -311,14 +308,19 @@ VENT.canvas = (function() {
 
 VENT.performance = (function() {
 
-    var _last, _delta, _elapsed;
+    var _last, _delta, _fps, _elapsed, _dom;
 
     _last = new Date();
     _delta = 0;
     _elapsed = 0;
+    _fps = 0;
 
-    function _init() {
+    function _init(domId) {
+        if (domId) {
+            _dom = document.getElementById(domId);
+        }
         VENT.renderer.registerRender(_update);
+
     }
 
     function _update() {
@@ -326,6 +328,10 @@ VENT.performance = (function() {
         _delta = (_newDate - _last) / 1000;
         _elapsed += _delta;
         _last = _newDate;
+        _fps = Math.floor(1/_delta);
+        if (_dom) {
+            _dom.innerHTML = _fps;
+        }
     }
 
     function _getDelta() {
@@ -334,7 +340,7 @@ VENT.performance = (function() {
 
     return {
         init: _init,
-        delta: _delta
+        delta: _getDelta
     }
 
 }());
