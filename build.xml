@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="VentBuild" default="dist">
+
+    <target name="prepare">
+        <delete dir="temp" />
+        <mkdir dir="temp" />
+        <copy todir="temp">
+            <fileset dir="lib" />
+        </copy>
+    </target>
+
+    <target name="minify" depends="prepare">
+        <foreach param="filename" absparam="absfilename" target="minify.file">
+            <fileset dir="temp" includes="*.js" />
+        </foreach>
+    </target>
+
+    <target name="minify.file">
+        <echo msg="Compressing File: ${absfilename}" />
+        <exec command="java -jar C:\phing\tools\yuicompressor-2.4.7\build\yuicompressor-2.4.7.jar ${absfilename} -o ${absfilename}" />
+    </target>
+
+    <target name="build" depends="minify">
+        <delete file="vent.min.js" />
+        <append destFile="vent.min.js">
+            <filelist dir="temp" files="vent.js, vent.utilties.js, vent.canvas.js" />
+        </append>
+    </target>
+
+    <target name="dist" depends="build">
+        <delete dir="temp" />
+    </target>
+
+</project>
