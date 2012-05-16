@@ -131,9 +131,61 @@ VENT.utilities = {
 
     isPoint: function isPoint(point) {
         return (point.hasOwnProperty("x") && point.hasOwnProperty("y"));
+    },
+
+    createFragment: function createFragment(id, htmlStr) {
+        var frag = document.createDocumentFragment(), temp = document.createElement("div");
+        temp.id = id;
+        temp.innerHTML = htmlStr;
+        while (temp.firstChild) { frag.appendChild(temp.firstChild); }
+        return frag;
     }
 
 };
+/**
+ * @namespace VENT.renderer
+ */
+
+VENT.renderer = (function() {
+
+    var _list, _len, _interval;
+
+    _list = [];
+    _len = 0;
+    //_interval = 33;
+    _interval = 1000;
+
+    function _loop() {
+        console.log("Render");
+        console.log(VENT.performance.getDelta());
+        for (var i = 0; i < _len; i++) { _list[i](); }
+        setTimeout(_loop, _interval);
+    }
+
+    function _registerRender(fn) {
+        var len = _list.push(fn);
+        _len = len;
+        return len - 1;
+    }
+
+    function _deregisterRender(i) {
+        _list.splice(i, 1);
+        _len = _list.length;
+    }
+
+    function _setFPS(fps) {
+        _renderInterval = Math.floor(1000 / fps);
+    }
+
+    _loop();
+
+    return {
+        registerRender: _registerRender,
+        deregisterRender: _deregisterRender,
+        setFPS: _setFPS
+    }
+
+}());
 /**
  * @namespace VENT.canvas
  */
@@ -251,6 +303,38 @@ VENT.canvas = (function() {
         drawCircle: _drawCircle,
         drawText: _drawText,
         clearRect: _clearRect
+    }
+
+}());/**
+ * @namespace VENT.performance
+ */
+
+VENT.performance = (function() {
+
+    var _last, _delta, _elapsed;
+
+    _last = new Date();
+    _delta = 0;
+    _elapsed = 0;
+
+    function _init() {
+        VENT.renderer.registerRender(_update);
+    }
+
+    function _update() {
+        var _newDate = new Date();
+        _delta = (_newDate - _last) / 1000;
+        _elapsed += _delta;
+        _last = _newDate;
+    }
+
+    function _getDelta() {
+        return _delta;
+    }
+
+    return {
+        init: _init,
+        delta: _delta
     }
 
 }());

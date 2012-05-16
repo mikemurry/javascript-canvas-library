@@ -2,6 +2,8 @@
 
 <project name="VentBuild" default="dist">
 
+    <property name="includes" value="vent.js, vent.utilities.js, vent.renderer.js, vent.canvas.js, vent.performance.js" />
+
     <target name="prepare">
         <delete dir="temp" />
         <mkdir dir="temp" />
@@ -24,11 +26,11 @@
     <target name="build" depends="minify">
         <delete file="vent.js" />
         <append destFile="vent.js">
-            <filelist dir="lib" files="vent.js, vent.utilities.js, vent.canvas.js" />
+            <filelist dir="lib" files="${includes}" />
         </append>
         <delete file="vent.min.js" />
         <append destFile="vent.min.js">
-            <filelist dir="temp" files="vent.js, vent.utilities.js, vent.canvas.js" />
+            <filelist dir="temp" files="${includes}" />
         </append>
     </target>
 
