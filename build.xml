@@ -22,13 +22,21 @@
     </target>
 
     <target name="build" depends="minify">
+        <delete file="vent.js" />
+        <append destFile="vent.js">
+            <filelist dir="lib" files="vent.js, vent.utilities.js, vent.canvas.js" />
+        </append>
         <delete file="vent.min.js" />
         <append destFile="vent.min.js">
-            <filelist dir="temp" files="vent.js, vent.utilties.js, vent.canvas.js" />
+            <filelist dir="temp" files="vent.js, vent.utilities.js, vent.canvas.js" />
         </append>
     </target>
 
-    <target name="dist" depends="build">
+    <target name="document" depends="build">
+        <exec command="java -jar C:\phing\tools\jsdoc-toolkit\jsrun.jar C:\phing\tools\jsdoc-toolkit\app\run.js vent.js -p -t=C:\phing\tools\jsdoc-toolkit\templates\jsdoc -d=doc" />
+    </target>
+
+    <target name="dist" depends="document">
         <delete dir="temp" />
     </target>
 
