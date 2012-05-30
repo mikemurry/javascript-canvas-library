@@ -85,9 +85,11 @@ VENT.utilities = {
      */
 
     pointTangent: function pointTangent(center, angle, distance) {
+
+        var radians = VENT.utilities.radians;
+
         if (center && angle !== null && distance !== null) {
-            if (this.isPoint(center)) {
-                var radians = this.radians;
+            if (VENT.utilities.isPoint(center)) {
                 return { x: (distance * Math.cos(radians(angle))) + center.x, y: (distance * Math.sin(radians(angle))) + center.y };
             } else { VENT.warn("Could not calculate tangent. Invalid point data. (X: " + center.x + ", Y: " + center.y + ")"); }
         } else { VENT.warn("Could not calculate tangent. Missing required data. (Point: " + center + ", Angle: " + angle + ", Distance: " + distance + ")"); }
@@ -124,6 +126,16 @@ VENT.utilities = {
     },
 
     /**
+     * @description Converts radians into degrees.
+     * @param radians {Number}
+     * @return {Number}
+     */
+
+    degrees: function degrees(radians) {
+        return radians * (180 / Math.PI);
+    },
+
+    /**
      * @description Validates if the argument is a point, an object with 'x' and 'y' properties.
      * @param point {Object} The object to samples.
      * @return {Boolean}
@@ -148,6 +160,18 @@ VENT.utilities = {
 
 VENT.renderer = (function() {
 
+    // requestAnimationFrame Shim
+    window.requestAnimFrame = (function requestAnimFrame() {
+        return window.requestAnimationFrame ||
+            window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame ||
+            window.oRequestAnimationFrame ||
+            window.msRequestAnimationFrame ||
+            function (callback) {
+                window.setTimeout(callback, 1000 / 60);
+            }
+    })();
+
     var _list, _len, _interval;
 
     _list = [];
@@ -156,7 +180,7 @@ VENT.renderer = (function() {
 
     function _loop() {
         for (var i = 0; i < _len; i++) { _list[i](); }
-        setTimeout(_loop, _interval);
+        requestAnimFrame(_loop);
     }
 
     function _registerRender(fn) {
@@ -338,9 +362,14 @@ VENT.performance = (function() {
         return _delta;
     }
 
+    function _getElapsed() {
+        return _elapsed;
+    }
+
     return {
         init: _init,
-        delta: _getDelta
+        delta: _getDelta,
+        elapsed: _getElapsed
     }
 
 }());

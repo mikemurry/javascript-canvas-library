@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="392e0f79-09db-4d11-a92d-ef136e5e9f41" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/web/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/web/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/samples/web/web.js" />
-      <change type="DELETED" beforePath="C:\Users\Mike\Desktop\vent\test\index.html" afterPath="" />
+    <list default="true" id="392e0f79-09db-4d11-a92d-ef136e5e9f41" name="Default" comment="Completed the wheel example.">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/files.html" afterPath="$PROJECT_DIR$/doc/files.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="$PROJECT_DIR$/doc/index.html" />
@@ -16,9 +12,8 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/VENT.utilities.html" afterPath="$PROJECT_DIR$/doc/symbols/VENT.utilities.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/_global_.html" afterPath="$PROJECT_DIR$/doc/symbols/_global_.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/src/vent.js.html" afterPath="$PROJECT_DIR$/doc/symbols/src/vent.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vent.performance.js" afterPath="$PROJECT_DIR$/lib/vent.performance.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vent.renderer.js" afterPath="$PROJECT_DIR$/lib/vent.renderer.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/vent.utilities.js" afterPath="$PROJECT_DIR$/lib/vent.utilities.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/wheel/index.html" afterPath="$PROJECT_DIR$/samples/wheel/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vent.js" afterPath="$PROJECT_DIR$/vent.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vent.min.js" afterPath="$PROJECT_DIR$/vent.min.js" />
     </list>
@@ -42,10 +37,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="web.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/samples/web/web.js">
+      <file leaf-file-name="wheel.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/samples/wheel/wheel.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="75" column="64" selection-start="1958" selection-end="1958" vertical-scroll-proportion="-0.07747748">
+            <state line="94" column="0" selection-start="2976" selection-end="2976" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vent.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vent.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="247" column="5" selection-start="7365" selection-end="7365" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vent.performance.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/vent.performance.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="43" column="28" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vent.renderer.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/vent.renderer.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="19" selection-start="595" selection-end="595" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vent.utilities.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/vent.utilities.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="50" column="42" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/samples/wheel/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="50" selection-start="262" selection-end="262" vertical-scroll-proportion="0.28280962">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/samples/wheel/style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="14" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -54,7 +103,7 @@
       <file leaf-file-name="vent.canvas.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/vent.canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="27" selection-start="2386" selection-end="2420" vertical-scroll-proportion="0.0">
+            <state line="37" column="34" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -84,19 +133,22 @@
         <option value="$PROJECT_DIR$/test/index.html" />
         <option value="$PROJECT_DIR$/samples/web/sample.html" />
         <option value="$PROJECT_DIR$/samples/web/web.html" />
-        <option value="$PROJECT_DIR$/lib/vent.renderer.js" />
-        <option value="$PROJECT_DIR$/lib/vent.utilities.js" />
         <option value="$PROJECT_DIR$/samples/web/index.html" />
         <option value="$PROJECT_DIR$/samples/web/style.css" />
-        <option value="$PROJECT_DIR$/lib/vent.performance.js" />
         <option value="$PROJECT_DIR$/samples/web/web.js" />
+        <option value="$PROJECT_DIR$/samples/wheel/style.css" />
+        <option value="$PROJECT_DIR$/lib/vent.utilities.js" />
+        <option value="$PROJECT_DIR$/lib/vent.performance.js" />
+        <option value="$PROJECT_DIR$/lib/vent.renderer.js" />
+        <option value="$PROJECT_DIR$/samples/wheel/wheel.js" />
+        <option value="$PROJECT_DIR$/samples/wheel/index.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="87" />
-    <option name="y" value="6" />
-    <option name="width" value="1177" />
+    <option name="x" value="2" />
+    <option name="y" value="13" />
+    <option name="width" value="1421" />
     <option name="height" value="1061" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -125,16 +177,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -150,6 +192,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="vent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="samples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wheel" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -187,6 +247,16 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -208,7 +278,7 @@
   <component name="RunManager">
     <configuration default="true" type="JavascriptDebugSession" factoryName="Local">
       <JSDebuggerConfigurationSettings>
-        <option name="engineId" />
+        <option name="engineId" value="embedded" />
         <option name="fileUrl" />
       </JSDebuggerConfigurationSettings>
       <method />
@@ -236,6 +306,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+      <changelist id="392e0f79-09db-4d11-a92d-ef136e5e9f41" name="Default" comment="" />
       <created>1337191483853</created>
       <updated>1337191483853</updated>
     </task>
@@ -251,32 +322,48 @@
       <created>1337207190684</created>
       <updated>1337207190684</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Started web sample.">
+      <created>1337212745883</created>
+      <updated>1337212745883</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added &quot;getElapsed&quot; function to return the elapsed time in seconds.">
+      <created>1338420380669</created>
+      <updated>1338420380669</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Switched from Timeout render loop to a requestAnimationFrame, with polyfill.">
+      <created>1338420426465</created>
+      <updated>1338420426465</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Completed the wheel example.">
+      <created>1338420573157</created>
+      <updated>1338420573157</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="87" y="6" width="1177" height="1061" extended-state="0" />
+    <frame x="2" y="13" width="1421" height="1061" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18565023" sideWeight="0.6581576" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34184238" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34295228" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15231788" sideWeight="0.65704775" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19461884" sideWeight="0.6581576" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17733628" sideWeight="0.65704775" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -316,7 +403,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added performance and renderer modules." />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed the wheel example." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -332,6 +419,10 @@
     <MESSAGE value="Initial Population" />
     <MESSAGE value="Added documentation script" />
     <MESSAGE value="Added performance and renderer modules." />
+    <MESSAGE value="Started web sample." />
+    <MESSAGE value="Added &quot;getElapsed&quot; function to return the elapsed time in seconds." />
+    <MESSAGE value="Switched from Timeout render loop to a requestAnimationFrame, with polyfill." />
+    <MESSAGE value="Completed the wheel example." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -339,37 +430,32 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://C:/phing/tools/jsdoc-toolkit/README.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="69" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="10" column="69" selection-start="457" selection-end="457" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/vent.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/vent.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="26" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="26" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vent.js">
+    <entry file="file://$PROJECT_DIR$/samples/web/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="247" column="5" selection-start="7571" selection-end="7571" vertical-scroll-proportion="6.9635158">
-          <folding />
-        </state>
+        <state line="15" column="7" selection-start="0" selection-end="357" vertical-scroll-proportion="-9.807693" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/samples/web/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="292" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.xml">
@@ -379,51 +465,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/vent.renderer.js">
+    <entry file="file://$PROJECT_DIR$/samples/web/web.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="494" selection-end="494" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/vent.utilities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="6" selection-start="656" selection-end="656" vertical-scroll-proportion="0.55135137">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/samples/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="76" selection-start="198" selection-end="198" vertical-scroll-proportion="-5.230769">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/samples/web/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="1" selection-start="270" selection-end="270" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/vent.performance.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="27" selection-start="489" selection-end="489" vertical-scroll-proportion="0.7183099">
+        <state line="78" column="33" selection-start="2023" selection-end="2023" vertical-scroll-proportion="1.1209387">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/vent.canvas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="27" selection-start="2386" selection-end="2420" vertical-scroll-proportion="0.0">
+        <state line="37" column="34" selection-start="1314" selection-end="1314" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/samples/web/web.js">
+    <entry file="file://$PROJECT_DIR$/lib/vent.performance.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="64" selection-start="1958" selection-end="1958" vertical-scroll-proportion="-0.07747748">
+        <state line="43" column="28" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/vent.renderer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="19" selection-start="595" selection-end="595" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/vent.utilities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="50" column="42" selection-start="2335" selection-end="2335" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/samples/wheel/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="14" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="247" column="5" selection-start="7365" selection-end="7365" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/samples/wheel/wheel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="0" selection-start="2976" selection-end="2976" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/samples/wheel/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="50" selection-start="262" selection-end="262" vertical-scroll-proportion="0.28280962">
           <folding />
         </state>
       </provider>
