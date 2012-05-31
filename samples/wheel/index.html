@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VENT Test</title>
+    <title>VENT Sample: Wheel</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <div id="vent-fps-counter"><strong>FPS:</strong> <span id="vent-fps-value">0</span></div>
-<canvas id="canvas" width="400" height="400" style="z-index:0;"></canvas>
-<canvas id="axis" width="400" height="400" style="z-index:50;"></canvas>
+<canvas id="canvas"></canvas>
+<canvas id="axis"></canvas>
 
-<script src="../../vent.min.js"></script>
+<!--<script src="../../vent.min.js"></script>-->
+<script src="../../lib/vent.js"></script>
+<script src="../../lib/vent.utilities.js"></script>
+<script src="../../lib/vent.renderer.js"></script>
+<script src="../../lib/vent.performance.js"></script>
+<script src="../../lib/vent.canvas.js"></script>
+<script src="../../lib/vent.point.js"></script>
+
+
 <script src="wheel.js"></script>
 
 </body>
