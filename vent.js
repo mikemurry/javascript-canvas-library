@@ -77,45 +77,6 @@ VENT.utilities = {
     },
 
     /**
-     * @description Calculates a point {x,y} at the specified angle and distance from the base point.
-     * @param center {Object} The center point {x,y} to base the resulting point.
-     * @param angle {Number} The number of degrees to rotate the resulting point around the center (0 is pointing right).
-     * @param distance {Number} The number of pixels between the center and the resulting point.
-     * @return {Object|Undefined} The resulting point expressed as an object with 'x' and 'y' properties.
-     */
-
-    pointTangent: function pointTangent(center, angle, distance) {
-
-        var radians = VENT.utilities.radians;
-
-        if (center && angle !== null && distance !== null) {
-            if (VENT.utilities.isPoint(center)) {
-                return { x: (distance * Math.cos(radians(angle))) + center.x, y: (distance * Math.sin(radians(angle))) + center.y };
-            } else { VENT.warn("Could not calculate tangent. Invalid point data. (X: " + center.x + ", Y: " + center.y + ")"); }
-        } else { VENT.warn("Could not calculate tangent. Missing required data. (Point: " + center + ", Angle: " + angle + ", Distance: " + distance + ")"); }
-        return undefined;
-    },
-
-    /**
-     * @description Interpolates between two points {x,y}.
-     * @param a {Object} The first point {x,y}.
-     * @param b {Object} The second point {x,y}.
-     * @param ratio {Number} The amount to interpolate between the two points. Between 0 and 1.
-     * @return {Object|Undefined} The interpolated point {x,y}.
-     */
-
-    pointLerp: function pointLerp(a,b,ratio) {
-        if (!ratio || ratio < 0) { ratio = 0; }
-        else if (ratio > 1) { ratio = 1; }
-        if (a && b && ratio !== null) {
-            if (this.isPoint(a) && this.isPoint(b)) {
-                return { x: a.x + ((b.x - a.x) * ratio), y: a.y + ((b.y - a.y) * ratio) };
-            } else { VENT.warn("Could not interpolate point. Invalid point."); }
-        } else { VENT.warn("Could not interpolate point. Missing required data."); }
-        return undefined;
-    },
-
-    /**
      * @description Converts degrees into radians.
      * @param degrees {Number}
      * @return {Number}
@@ -133,16 +94,6 @@ VENT.utilities = {
 
     degrees: function degrees(radians) {
         return radians * (180 / Math.PI);
-    },
-
-    /**
-     * @description Validates if the argument is a point, an object with 'x' and 'y' properties.
-     * @param point {Object} The object to samples.
-     * @return {Boolean}
-     */
-
-    isPoint: function isPoint(point) {
-        return (point.hasOwnProperty("x") && point.hasOwnProperty("y"));
     },
 
     createFragment: function createFragment(id, htmlStr) {
@@ -211,11 +162,42 @@ VENT.renderer = (function() {
  * @namespace VENT.canvas
  */
 
-VENT.canvas = (function() {
+VENT.Canvas = function Canvas(canvasId, options) {
+
+    this.dom = document.getElementById(canvasId);
+    this.ctx = this.dom.getContext("2d");
+    this.enabled = (this.ctx !== undefined);
+
+    if (this.enabled) {
+
+        // Handle Manual Height/Width Options
+        if (options.width) { this.dom.width = window.innerWidth; }
+        if (options.height) { this.dom.height = window.innerHeight; }
+
+        // Handle Full Screen Option
+        if (options.fullscreen) {
+            this.dom.width = window.innerWidth;
+            this.dom.height = window.innerHeight;
+        }
+
+        // Handle Z-Index Option
+        if (options.zindex) {
+            this.dom.style.zIndex = options.zindex;
+        }
+
+        this.width = this.dom.width;
+        this.height = this.dom.height;
+
+    } else { VENT.warn("Canvas (ID: '" + canvasId + "') cannot be enabled."); }
+
+};
+
+VENT.Canvas.prototype = {
+
+    // Private Functions
 
     /**
      * @description Draws a rectangle on the canvas.
-     * @param ctx {Object} The canvas context to draw on.
      * @param x {Number} The distance from the left edge of the canvas to draw the left edge of the rectangle.
      * @param y {Number} The distance form the top edge of the canvas to draw the top edge of the rectangle.
      * @param w {Number} The width, in pixels, of the rectangle.
@@ -226,107 +208,98 @@ VENT.canvas = (function() {
      * @private
      */
 
-    function _drawRectangle(ctx, x, y, w, h, fillStyle, strokeStyle, lineWidth) {
+    drawRectangle: function drawRectangle(x, y, w, h, fillStyle, strokeStyle, lineWidth) {
 
         if (fillStyle) {
-            ctx.fillStyle = fillStyle;
-            ctx.fillRect(x, y, w, h);
+            this.ctx.fillStyle = fillStyle;
+            this.ctx.fillRect(x, y, w, h);
         }
 
         if (strokeStyle) {
-            ctx.strokeStyle = strokeStyle;
-            ctx.lineWidth = lineWidth || 1;
-            ctx.strokeRect(x, y, w, h);
+            this.ctx.strokeStyle = strokeStyle;
+            this.ctx.lineWidth = lineWidth || 1;
+            this.ctx.strokeRect(x, y, w, h);
         }
 
-    }
+    },
 
     /**
      * @description Draws a path on the canvas.
-     * @param ctx {Object} The canvas context used to draw the path.
      * @param steps {Object[]} An array of points {x,y} to draw sequentially.
      * @param strokeStyle {String} The canvas style used to stroke the path.
      * @param lineWidth {Number} The width of the path.
      * @private
      */
 
-    function _drawPath(ctx, steps, strokeStyle, lineWidth) {
+    drawPath: function drawPath(steps, strokeStyle, lineWidth) {
 
         var length = steps.length, i;
 
-        ctx.strokeStyle = strokeStyle || "#000000";
-        ctx.lineWidth = lineWidth || 1;
-        ctx.beginPath();
-        ctx.moveTo(steps[0].x, steps[0].y);
+        this.ctx.strokeStyle = strokeStyle || "#000000";
+        this.ctx.lineWidth = lineWidth || 1;
+        this.ctx.beginPath();
+        this.ctx.moveTo(steps[0].x, steps[0].y);
         for (i = 1; i<length; i++) {
-            ctx.lineTo(steps[i].x, steps[i].y);
+            this.ctx.lineTo(steps[i].x, steps[i].y);
         }
-        ctx.stroke();
+        this.ctx.stroke();
 
-    }
+    },
 
     /**
      * @description Draws a series of similar lines as a batch. More efficient than drawing them individually.
-     * @param ctx {Object} The canvas context to draw the lines.
      * @param steps {Object[]} An array of points {x,y}. Each item in the array should contain an array of start and end points.
      * @param strokeStyle {String} The canvas stroke style.
      * @param lineWidth {Number} The width of the stroke.
      * @private
      */
 
-    function _drawHaystack(ctx, steps, strokeStyle, lineWidth) {
+    drawHaystack: function drawHaystack(steps, strokeStyle, lineWidth) {
 
         var length = steps.length, i;
 
-        ctx.strokeStyle = strokeStyle || "#000000";
-        ctx.lineWidth = lineWidth || 1;
-        ctx.beginPath();
+        this.ctx.strokeStyle = strokeStyle || "#000000";
+        this.ctx.lineWidth = lineWidth || 1;
+        this.ctx.beginPath();
         for (i = 0; i<length; i++) {
-            ctx.moveTo(steps[i][0].x, steps[i][0].y);
-            ctx.lineTo(steps[i][1].x, steps[i][1].y);
+            this.ctx.moveTo(steps[i][0].x, steps[i][0].y);
+            this.ctx.lineTo(steps[i][1].x, steps[i][1].y);
         }
-        ctx.stroke();
+        this.ctx.stroke();
 
-    }
+    },
 
-    function _drawCircle(ctx, center, radius, fillStyle, strokeStyle, lineWidth){
-
-        ctx.beginPath();
-        ctx.arc(center.x, center.y, radius, 0, Math.PI * 2, false);
+    drawCircle: function drawCircle(center, radius, fillStyle, strokeStyle, lineWidth){
+        this.ctx.beginPath();
+        this.ctx.arc(center.x, center.y, radius, 0, Math.PI * 2, false);
         if (fillStyle) {
-            ctx.fillStyle = fillStyle;
-            ctx.fill();
+            this.ctx.fillStyle = fillStyle;
+            this.ctx.fill();
         }
         if (strokeStyle) {
-            ctx.strokeStyle = strokeStyle;
-            ctx.lineWidth = lineWidth || 1;
-            ctx.stroke();
+            this.ctx.strokeStyle = strokeStyle;
+            this.ctx.lineWidth = lineWidth || 1;
+            this.ctx.stroke();
         }
+    },
 
+    drawText: function drawText(str, pos, baseline, align, max, fillStyle) {
+        if (fillStyle) { this.ctx.fillStyle = fillStyle; }
+        this.ctx.font = "bold 10px sans-serif";
+        if (baseline) { this.ctx.textBaseline = baseline; }
+        if (align) { this.ctx.textAlign = align; }
+        this.ctx.fillText(str, pos.x, pos.y, max ? max : null);
+    },
+
+    clearRect: function clearRect(x, y, w, h) {
+        this.ctx.clearRect(x,y,w,h);
+    },
+
+    clear: function clear() {
+        this.ctx.clearRect(0,0,this.dom.width,this.dom.height);
     }
 
-    function _drawText(ctx, str, pos, baseline, align, max, fillStyle) {
-        if (fillStyle) { ctx.fillStyle = fillStyle; }
-        ctx.font = "bold 10px sans-serif";
-        if (baseline) { ctx.textBaseline = baseline; }
-        if (align) { ctx.textAlign = align; }
-        ctx.fillText(str, pos.x, pos.y, max ? max : null);
-    }
-
-    function _clearRect(ctx, x, y, w, h) {
-        ctx.clearRect(x,y,w,h);
-    }
-
-    return {
-        drawRectangle: _drawRectangle,
-        drawPath: _drawPath,
-        drawHaystack: _drawHaystack,
-        drawCircle: _drawCircle,
-        drawText: _drawText,
-        clearRect: _clearRect
-    }
-
-}());/**
+};/**
  * @namespace VENT.performance
  */
 
@@ -373,3 +346,82 @@ VENT.performance = (function() {
     }
 
 }());
+VENT.Point = function Point(x, y, z) {
+    this.set(x,y,z);
+};
+
+VENT.Point.prototype = {
+
+    constructor: "Point",
+
+    set: function set(x,y,z) {
+        this.x = x || 0;
+        this.y = y || 0;
+        this.z = z || 0;
+    },
+
+    get: function get() {
+        return { x: this.x, y: this.y, z: this.z };
+    },
+
+    /**
+     * @description Calculates the distance between two points.
+     * @param a {Object} The first point.
+     * @return {Number|Undefined} The resulting length.
+     */
+
+    distance: function distance(a) {
+        if (a.constructor === "Point") { return Math.sqrt(Math.pow(a.x- this.x, 2) + Math.pow(a.y- this.y,2)); }
+        else { VENT.warn("Cannot calculate distance of a non-point."); }
+        return undefined;
+    },
+
+    /**
+     * @description Calculates the angle between two points.
+     * @param a {Object} The first point.
+     * @return {Number|Undefined} The resulting angle in radians.
+     */
+
+    angle: function angle(a) {
+        if (a.constructor === "Point") { return Math.atan2(a.y- this.y, a.x - this.x); }
+        else { VENT.warn("Cannot calculate angle of a non-point."); }
+        return undefined;
+    },
+
+    /**
+     * @description Calculates a point {x,y} at the specified angle and distance from the base point.
+     * @param angle {Number} The number of degrees to rotate the resulting point around the center (0 is pointing right).
+     * @param distance {Number} The number of pixels between the center and the resulting point.
+     * @return {Object|Undefined} The resulting point expressed as an object with 'x' and 'y' properties.
+     */
+
+    tangent: function tangent(angle, distance) {
+
+        var radians = VENT.utilities.radians;
+
+        if (angle !== null && distance !== null) {
+            return new VENT.Point((distance * Math.cos(radians(angle))) + this.x, (distance * Math.sin(radians(angle))) + this.y);
+        } else { VENT.warn("Could not calculate tangent. Missing required data. (Angle: " + angle + ", Distance: " + distance + ")"); }
+        return undefined;
+
+    },
+
+    /**
+     * @description Interpolates between two points {x,y}.
+     * @param a {Object} The first point {x,y}.
+     * @param ratio {Number} The amount to interpolate between the two points. Between 0 and 1.
+     * @return {Object|Undefined} The interpolated point {x,y}.
+     */
+
+    lerp: function lerp(a,ratio) {
+        if (!ratio || ratio < 0) { ratio = 0; }
+        else if (ratio > 1) { ratio = 1; }
+        if (this && a && ratio !== null) {
+            if (a.constructor === "Point") {
+                return { x: this.x + ((a.x - this.x) * ratio), y: this.y + ((a.y - this.y) * ratio) };
+            } else { VENT.warn("Could not interpolate point. Invalid point."); }
+        } else { VENT.warn("Could not interpolate point. Missing required data."); }
+        return undefined;
+    }
+
+};

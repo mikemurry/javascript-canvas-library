@@ -2,7 +2,7 @@
 
 <project name="VentBuild" default="dist">
 
-    <property name="includes" value="vent.js, vent.utilities.js, vent.renderer.js, vent.canvas.js, vent.performance.js" />
+    <property name="includes" value="vent.js, vent.utilities.js, vent.renderer.js, vent.canvas.js, vent.performance.js, vent.point.js" />
 
     <target name="prepare">
         <delete dir="temp" />
