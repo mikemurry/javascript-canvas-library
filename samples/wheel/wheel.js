@@ -5,26 +5,26 @@ var web = {
         var that = this, perf = VENT.performance, i;
 
         // Initialize Canvas
-        this.canvas = document.getElementById(canvasId);
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
 
-        this.axis = document.getElementById(axisId);
-        this.axis.width = window.innerWidth;
-        this.axis.height = window.innerHeight;
+        this.canvas = new VENT.Canvas(canvasId, {
+            fullscreen: true,
+            zindex: 5
+        });
+
+        this.axis = new VENT.Canvas(axisId, {
+            fullscreen: true,
+            zindex: 0
+        });
 
         this.center = {
             x: Math.floor(this.canvas.width / 2),
             y: Math.floor(this.canvas.height / 2)
         };
 
-        // Initialize Context
-        this.ctx = this.canvas.getContext("2d");
-        this.axisCtx = this.axis.getContext("2d");
-
         // Instantiate Data
         this.pointCount = 600;
         this.step = 0;
+        this.hover = null;
         this.activity = [];
         this.strength = [];
 
@@ -37,23 +37,48 @@ var web = {
         // Enable Performance Monitoring
         perf.init("vent-fps-value");
 
+        // Initialize Mouse
+        this.mouse = { x: 0, y: 0 };
+
         // Register Render Function
         VENT.renderer.registerRender(function() {
             that.render();
         });
 
-        this.drawAxis();
+        // Register Mouse Move Function
+        this.canvas.dom.onmousemove = function(e) {
+            that.handleMouse.call(that, e);
+        };
+
+        this.drawAxis(this.center);
+
+    },
+
+    handleMouse: function handleMouse(e) {
+
+        var distance = VENT.utilities.pointDistance(this.mouse, this.center);
+
+        this.mouse = {
+            x: e.clientX,
+            y: e.clientY
+        };
+
+        if (distance <= 400 && distance >= 200) {
+            var utils = VENT.utilities;
+            this.hover = Math.round((utils.degrees(utils.pointAngle(this.mouse, this.center)) + 180) / (360/this.pointCount));
+            if (this.hover === this.pointCount) { this.hover = 0; }
+        } else { this.hover = null; }
 
     },
 
     render: function render() {
 
         // Clear Screen
-        this.clear();
+        this.canvas.clear();
 
         // Draw Lines
-        this.drawHaystack(this.activity, "rgba(132,216,77,1)", 2);
-        this.drawHaystack(this.strength, "rgba(100,100,100,1)", 2);
+        this.canvas.drawHaystack(this.activity, "rgba(132,216,77,1)", 2);
+        this.canvas.drawHaystack(this.strength, "rgba(100,100,100,1)", 2);
 
         // Increment Step
         this.step++;
@@ -64,7 +89,12 @@ var web = {
         this.strength[this.step] = this.calculateStack(this.center, this.pointCount, this.step, -100, 249, "random");
 
         // Draw Step Indicator
-        this.drawPath([this.center, this.activity[this.step][0]], "rgba(255,255,255,1)", 2);
+        this.canvas.drawPath([this.center, this.activity[this.step][0]], "rgba(255,255,255,1)", 2);
+
+        // Draw Hover Indicator
+        if (this.hover !== null) {
+            this.canvas.drawPath([this.strength[this.hover][0], this.activity[this.hover][0]], "rgba(255,123,0,1)", 2);
+        }
 
     },
 
@@ -89,24 +119,14 @@ var web = {
 
     },
 
-    clear: function clear() {
-        VENT.canvas.clearRect(this.ctx, 0, 0, this.canvas.width, this.canvas.height);
-    },
-
-    drawHaystack: function drawHaystack(steps, strokeStyle, lineWidth) {
-        VENT.canvas.drawHaystack(this.ctx, steps, strokeStyle, lineWidth);
-    },
-
-    drawPath: function drawPath(steps, strokeStyle, lineWidth) {
-        VENT.canvas.drawPath(this.ctx, steps, strokeStyle, lineWidth);
-    },
-
-    drawAxis: function drawAxis() {
-        var drawCircle = VENT.canvas.drawCircle;
-        drawCircle(this.axisCtx, this.center, 200, null, "rgba(255,255,255,0.2)", 1);
-        drawCircle(this.axisCtx, this.center, 300, null, "rgba(255,255,255,0.2)", 1);
-        drawCircle(this.axisCtx, this.center, 350, null, "rgba(255,255,255,0.2)", 1);
-        drawCircle(this.axisCtx, this.center, 400, null, "rgba(255,255,255,0.2)", 1);
+    drawAxis: function drawAxis(center) {
+        console.log(this);
+        this.axis.drawCircle(center, 10, "rgba(132,216,77,0.5)");
+        this.axis.drawCircle(center, 5, "rgba(255,255,255,1)");
+        this.axis.drawCircle(center, 200, null, "rgba(255,255,255,0.2)", 1);
+        this.axis.drawCircle(center, 300, null, "rgba(255,255,255,0.2)", 1);
+        this.axis.drawCircle(center, 350, null, "rgba(255,255,255,0.2)", 1);
+        this.axis.drawCircle(center, 400, null, "rgba(255,255,255,0.2)", 1);
     }
 
 };
