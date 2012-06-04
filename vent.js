@@ -1,8 +1,8 @@
 /**
- * @namespace VENT
+ * @namespace JCL
  */
 
-var VENT = VENT || {
+var JCL = JCL || {
 
     log: function log(msg) {
         console.log(msg);
@@ -23,20 +23,20 @@ var VENT = VENT || {
 };
 
 /**
- * @description Safely augments the VENT namespace to include the specified path.
- * @param ns {String} A dot separated namespace. Prefixing with "VENT." is optional.
- * @return {Object} Returns the VENT object.
+ * @description Safely augments the JCL namespace to include the specified path.
+ * @param ns {String} A dot separated namespace. Prefixing with "JCL." is optional.
+ * @return {Object} Returns the JCL object.
  */
 
-VENT.namespace = function(ns) {
+JCL.namespace = function(ns) {
 
     var parts, parent, i, count;
 
-    parent = VENT;
+    parent = JCL;
     parts = ns.split(".");
 
     // Skip Redundant Top Level
-    if (parts[0] === "VENT") {
+    if (parts[0] === "JCL") {
         parts = parts.slice(1);
     }
 
@@ -57,10 +57,10 @@ VENT.namespace = function(ns) {
     return parent;
 
 };/**
- * @namespace VENT.utilities
+ * @namespace JCL.utilities
  */
 
-VENT.utilities = {
+JCL.utilities = {
 
     /**
      * @description Returns an integer between the specified minimum (inclusive) and maximum (exclusive).
@@ -72,7 +72,7 @@ VENT.utilities = {
     randomInt: function randomInt(min, max) {
         if (min !== undefined && max !== undefined) {
             return Math.floor((max - min) * Math.random()) + min;
-        } else { VENT.warn("utilities.randomInt() Error: Missing min or max argument."); }
+        } else { JCL.warn("utilities.randomInt() Error: Missing min or max argument."); }
         return false;
     },
 
@@ -106,10 +106,10 @@ VENT.utilities = {
 
 };
 /**
- * @namespace VENT.renderer
+ * @namespace JCL.renderer
  */
 
-VENT.renderer = (function() {
+JCL.renderer = (function() {
 
     // requestAnimationFrame Shim
     window.requestAnimFrame = (function requestAnimFrame() {
@@ -159,10 +159,10 @@ VENT.renderer = (function() {
 
 }());
 /**
- * @namespace VENT.canvas
+ * @namespace JCL.canvas
  */
 
-VENT.Canvas = function Canvas(canvasId, options) {
+JCL.Canvas = function Canvas(canvasId, options) {
 
     this.dom = document.getElementById(canvasId);
     this.ctx = this.dom.getContext("2d");
@@ -188,11 +188,11 @@ VENT.Canvas = function Canvas(canvasId, options) {
         this.width = this.dom.width;
         this.height = this.dom.height;
 
-    } else { VENT.warn("Canvas (ID: '" + canvasId + "') cannot be enabled."); }
+    } else { JCL.warn("Canvas (ID: '" + canvasId + "') cannot be enabled."); }
 
 };
 
-VENT.Canvas.prototype = {
+JCL.Canvas.prototype = {
 
     // Private Functions
 
@@ -300,10 +300,10 @@ VENT.Canvas.prototype = {
     }
 
 };/**
- * @namespace VENT.performance
+ * @namespace JCL.performance
  */
 
-VENT.performance = (function() {
+JCL.performance = (function() {
 
     var _last, _delta, _fps, _elapsed, _dom;
 
@@ -316,7 +316,7 @@ VENT.performance = (function() {
         if (domId) {
             _dom = document.getElementById(domId);
         }
-        VENT.renderer.registerRender(_update);
+        JCL.renderer.registerRender(_update);
 
     }
 
@@ -346,11 +346,11 @@ VENT.performance = (function() {
     }
 
 }());
-VENT.Point = function Point(x, y, z) {
+JCL.Point = function Point(x, y, z) {
     this.set(x,y,z);
 };
 
-VENT.Point.prototype = {
+JCL.Point.prototype = {
 
     constructor: "Point",
 
@@ -372,7 +372,7 @@ VENT.Point.prototype = {
 
     distance: function distance(a) {
         if (a.constructor === "Point") { return Math.sqrt(Math.pow(a.x- this.x, 2) + Math.pow(a.y- this.y,2)); }
-        else { VENT.warn("Cannot calculate distance of a non-point."); }
+        else { JCL.warn("Cannot calculate distance of a non-point."); }
         return undefined;
     },
 
@@ -384,7 +384,7 @@ VENT.Point.prototype = {
 
     angle: function angle(a) {
         if (a.constructor === "Point") { return Math.atan2(a.y- this.y, a.x - this.x); }
-        else { VENT.warn("Cannot calculate angle of a non-point."); }
+        else { JCL.warn("Cannot calculate angle of a non-point."); }
         return undefined;
     },
 
@@ -397,11 +397,11 @@ VENT.Point.prototype = {
 
     tangent: function tangent(angle, distance) {
 
-        var radians = VENT.utilities.radians;
+        var radians = JCL.utilities.radians;
 
         if (angle !== null && distance !== null) {
-            return new VENT.Point((distance * Math.cos(radians(angle))) + this.x, (distance * Math.sin(radians(angle))) + this.y);
-        } else { VENT.warn("Could not calculate tangent. Missing required data. (Angle: " + angle + ", Distance: " + distance + ")"); }
+            return new JCL.Point((distance * Math.cos(radians(angle))) + this.x, (distance * Math.sin(radians(angle))) + this.y);
+        } else { JCL.warn("Could not calculate tangent. Missing required data. (Angle: " + angle + ", Distance: " + distance + ")"); }
         return undefined;
 
     },
@@ -419,8 +419,8 @@ VENT.Point.prototype = {
         if (this && a && ratio !== null) {
             if (a.constructor === "Point") {
                 return { x: this.x + ((a.x - this.x) * ratio), y: this.y + ((a.y - this.y) * ratio) };
-            } else { VENT.warn("Could not interpolate point. Invalid point."); }
-        } else { VENT.warn("Could not interpolate point. Missing required data."); }
+            } else { JCL.warn("Could not interpolate point. Invalid point."); }
+        } else { JCL.warn("Could not interpolate point. Missing required data."); }
         return undefined;
     }
 

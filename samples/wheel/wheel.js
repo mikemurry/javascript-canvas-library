@@ -2,21 +2,21 @@ var web = {
 
     init: function init(canvasId, axisId) {
 
-        var that = this, perf = VENT.performance, i;
+        var that = this, perf = JCL.performance, i;
 
         // Initialize Canvas
 
-        this.canvas = new VENT.Canvas(canvasId, {
+        this.canvas = new JCL.Canvas(canvasId, {
             fullscreen: true,
             zindex: 5
         });
 
-        this.axis = new VENT.Canvas(axisId, {
+        this.axis = new JCL.Canvas(axisId, {
             fullscreen: true,
             zindex: 0
         });
 
-        this.center = new VENT.Point(Math.floor(this.canvas.width / 2), Math.floor(this.canvas.height / 2));
+        this.center = new JCL.Point(Math.floor(this.canvas.width / 2), Math.floor(this.canvas.height / 2));
 
         // Instantiate Data
         this.pointCount = 600;
@@ -46,13 +46,13 @@ var web = {
         }
 
         // Enable Performance Monitoring
-        perf.init("vent-fps-value");
+        perf.init("JCL-fps-value");
 
         // Initialize Mouse
-        this.mouse = new VENT.Point(0,0);
+        this.mouse = new JCL.Point(0,0);
 
         // Register Render Function
-        VENT.renderer.registerRender(function() {
+        JCL.renderer.registerRender(function() {
             that.render();
         });
 
@@ -72,7 +72,7 @@ var web = {
         this.mouse.set(e.clientX, e.clientY);
 
         if (distance <= 400 && distance >= 200) {
-            var degrees = VENT.utilities.degrees;
+            var degrees = JCL.utilities.degrees;
             this.hover = Math.round((degrees(this.mouse.angle(this.center)) + 180) / (360/this.pointCount));
             if (this.hover === this.pointCount) { this.hover = 0; }
         } else { this.hover = null; }
@@ -109,12 +109,12 @@ var web = {
     calculateStack: function calculateStack(center, points, step, maxSize, radius, type) {
 
         var size, a, ang, c;
-        var degrees = VENT.utilities.degrees;
+        var degrees = JCL.utilities.degrees;
 
         if (type === "random") {
             size = (Math.random()*Math.random()) * maxSize;
         } else if (type === "sin") {
-            size = (maxSize * 0.5) +  ((Math.sin(VENT.performance.elapsed() * 2) * Math.cos(VENT.performance.elapsed())) * (maxSize * 0.4)) + (maxSize * 0.1 * Math.random());
+            size = (maxSize * 0.5) +  ((Math.sin(JCL.performance.elapsed() * 2) * Math.cos(JCL.performance.elapsed())) * (maxSize * 0.4)) + (maxSize * 0.1 * Math.random());
         }
 
         a = center.tangent(step * (360/points), radius);

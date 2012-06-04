@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project name="VentBuild" default="dist">
+<project name="JCLBuild" default="dist">
 
-    <property name="includes" value="vent.js, vent.utilities.js, vent.renderer.js, vent.canvas.js, vent.performance.js, vent.point.js" />
+    <property name="includes" value="JCL.js, JCL.utilities.js, JCL.renderer.js, JCL.canvas.js, JCL.performance.js, JCL.point.js" />
 
     <target name="prepare">
         <delete dir="temp" />
@@ -24,18 +24,18 @@
     </target>
 
     <target name="build" depends="minify">
-        <delete file="vent.js" />
-        <append destFile="vent.js">
+        <delete file="JCL.js" />
+        <append destFile="JCL.js">
             <filelist dir="lib" files="${includes}" />
         </append>
-        <delete file="vent.min.js" />
-        <append destFile="vent.min.js">
+        <delete file="JCL.min.js" />
+        <append destFile="JCL.min.js">
             <filelist dir="temp" files="${includes}" />
         </append>
     </target>
 
     <target name="document" depends="build">
-        <exec command="java -jar C:\phing\tools\jsdoc-toolkit\jsrun.jar C:\phing\tools\jsdoc-toolkit\app\run.js vent.js -p -t=C:\phing\tools\jsdoc-toolkit\templates\jsdoc -d=doc" />
+        <exec command="java -jar C:\phing\tools\jsdoc-toolkit\jsrun.jar C:\phing\tools\jsdoc-toolkit\app\run.js JCL.js -p -t=C:\phing\tools\jsdoc-toolkit\templates\jsdoc -d=doc" />
     </target>
 
     <target name="dist" depends="document">

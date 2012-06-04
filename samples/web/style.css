@@ -9,7 +9,7 @@ canvas {
     z-index:0;
 }
 
-#vent-fps-counter {
+#JCL-fps-counter {
     background: rgba(0,0,0,0.5);
     color:#fff;
     left: 10px;
@@ -20,6 +20,6 @@ canvas {
 
 }
 
-#vent-fps-value {
+#JCL-fps-value {
 
 }

@@ -6,7 +6,7 @@ var web = {
     init: function init(canvasId) {
 
         var that = this,
-            perf = VENT.performance;
+            perf = JCL.performance;
 
         // Initialize Canvas
         this.canvas = document.getElementById(canvasId);
@@ -22,10 +22,10 @@ var web = {
 
 
         // Enable Performance Monitoring
-        perf.init("vent-fps-value");
+        perf.init("JCL-fps-value");
 
         // Register Render Function
-        VENT.renderer.registerRender(function() {
+        JCL.renderer.registerRender(function() {
             that.render();
         });
 
@@ -40,7 +40,7 @@ var web = {
     },
 
     generateConnections: function generateConnections(connections) {
-        var output = [], i, range, rand = VENT.utilities.randomInt;
+        var output = [], i, range, rand = JCL.utilities.randomInt;
         range = this.points.length;
         for (i = 0; i < connections; i++) {
             output.push([this.points[rand(0,range)], this.points[rand(0,range)]]);
@@ -49,7 +49,7 @@ var web = {
     },
 
     randomPoint: function randomPoint() {
-        var random = VENT.utilities.randomInt;
+        var random = JCL.utilities.randomInt;
         return {
             x: random(0, this.canvas.width),
             y: random(0, this.canvas.height)
@@ -84,15 +84,15 @@ var web = {
     },
 
     clear: function clear() {
-        VENT.canvas.clearRect(this.ctx, 0, 0, this.canvas.width, this.canvas.height);
+        JCL.canvas.clearRect(this.ctx, 0, 0, this.canvas.width, this.canvas.height);
     },
 
     drawCircle: function drawCircle(center, radius, fillStyle, strokeStyle, lineWidth) {
-        VENT.canvas.drawCircle(this.ctx, center, radius, fillStyle, strokeStyle, lineWidth);
+        JCL.canvas.drawCircle(this.ctx, center, radius, fillStyle, strokeStyle, lineWidth);
     },
 
     drawHaystack: function drawHaystack(steps, strokeStyle, lineWidth) {
-        VENT.canvas.drawHaystack(this.ctx, steps, strokeStyle, lineWidth);
+        JCL.canvas.drawHaystack(this.ctx, steps, strokeStyle, lineWidth);
     }
 
 };
