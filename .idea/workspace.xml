@@ -1,34 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="392e0f79-09db-4d11-a92d-ef136e5e9f41" name="Default" comment="Completed the wheel example.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="$PROJECT_DIR$/.idea/.name" />
+    <list default="true" id="392e0f79-09db-4d11-a92d-ef136e5e9f41" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JCL.min.js" />
+      <change type="DELETED" beforePath="D:\Projects\jcl\vent.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Projects\jcl\vent.min.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/files.html" afterPath="$PROJECT_DIR$/doc/files.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="$PROJECT_DIR$/doc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/VENT.canvas.html" afterPath="$PROJECT_DIR$/doc/symbols/VENT.canvas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/VENT.html" afterPath="$PROJECT_DIR$/doc/symbols/VENT.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/VENT.performance.html" afterPath="$PROJECT_DIR$/doc/symbols/VENT.performance.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/VENT.renderer.html" afterPath="$PROJECT_DIR$/doc/symbols/VENT.renderer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/VENT.utilities.html" afterPath="$PROJECT_DIR$/doc/symbols/VENT.utilities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/_global_.html" afterPath="$PROJECT_DIR$/doc/symbols/_global_.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/src/vent.js.html" afterPath="$PROJECT_DIR$/doc/symbols/src/vent.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/web/index.html" afterPath="$PROJECT_DIR$/samples/web/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/web/style.css" afterPath="$PROJECT_DIR$/samples/web/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/web/web.js" afterPath="$PROJECT_DIR$/samples/web/web.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/wheel/index.html" afterPath="$PROJECT_DIR$/samples/wheel/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/wheel/style.css" afterPath="$PROJECT_DIR$/samples/wheel/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/wheel/wheel.js" afterPath="$PROJECT_DIR$/samples/wheel/wheel.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vent.js" afterPath="$PROJECT_DIR$/vent.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vent.min.js" afterPath="$PROJECT_DIR$/vent.min.js" />
-      <change type="MOVED" beforePath="D:\Projects\jcl\.idea\vent.iml" afterPath="$PROJECT_DIR$/.idea/jcl.iml" />
-      <change type="MOVED" beforePath="D:\Projects\jcl\lib\vent.canvas.js" afterPath="$PROJECT_DIR$/lib/jcl.canvas.js" />
-      <change type="MOVED" beforePath="D:\Projects\jcl\lib\vent.js" afterPath="$PROJECT_DIR$/lib/jcl.js" />
-      <change type="MOVED" beforePath="D:\Projects\jcl\lib\vent.performance.js" afterPath="$PROJECT_DIR$/lib/jcl.performance.js" />
-      <change type="MOVED" beforePath="D:\Projects\jcl\lib\vent.point.js" afterPath="$PROJECT_DIR$/lib/jcl.point.js" />
-      <change type="MOVED" beforePath="D:\Projects\jcl\lib\vent.renderer.js" afterPath="$PROJECT_DIR$/lib/jcl.renderer.js" />
-      <change type="MOVED" beforePath="D:\Projects\jcl\lib\vent.utilities.js" afterPath="$PROJECT_DIR$/lib/jcl.utilities.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MOVED" beforePath="D:\Projects\jcl\vent.js" afterPath="$PROJECT_DIR$/JCL.js" />
     </list>
     <ignored path="vent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,15 +33,6 @@
         <entry file="file://$PROJECT_DIR$/samples/wheel/wheel.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="94" column="0" selection-start="2985" selection-end="2985" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vent.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vent.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="247" column="0" selection-start="6346" selection-end="6346" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -95,10 +65,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jcl.canvas.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="jcl.canvas.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/jcl.canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="77" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.02021403">
+            <state line="94" column="7" selection-start="3122" selection-end="3122" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="28" selection-start="70" selection-end="70" vertical-scroll-proportion="0.06238532">
               <folding />
             </state>
           </provider>
@@ -137,6 +116,7 @@
         <option value="$PROJECT_DIR$/samples/wheel/index.html" />
         <option value="$PROJECT_DIR$/lib/vent.js" />
         <option value="$PROJECT_DIR$/build.xml" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -301,18 +281,23 @@
       <created>1338420573157</created>
       <updated>1338420573157</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Renamed from VENT to JCL">
+      <created>1338771202575</created>
+      <updated>1338771202575</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34180138" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15231788" sideWeight="0.65704775" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15116279" sideWeight="0.6581986" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17931457" sideWeight="0.6709007" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3384333" sideWeight="0.6581986" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -323,7 +308,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290993" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34295228" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -366,7 +350,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed the wheel example." />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed from VENT to JCL" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -386,21 +370,12 @@
     <MESSAGE value="Added &quot;getElapsed&quot; function to return the elapsed time in seconds." />
     <MESSAGE value="Switched from Timeout render loop to a requestAnimationFrame, with polyfill." />
     <MESSAGE value="Completed the wheel example." />
+    <MESSAGE value="Renamed from VENT to JCL" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vent.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/samples/web/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="7" selection-start="0" selection-end="357" vertical-scroll-proportion="-9.807693" />
@@ -421,11 +396,6 @@
         <state line="94" column="0" selection-start="2985" selection-end="2985" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vent.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="247" column="0" selection-start="6346" selection-end="6346" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/samples/wheel/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="29" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0" />
@@ -443,7 +413,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/jcl.canvas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="77" selection-start="2152" selection-end="2152" vertical-scroll-proportion="0.02021403">
+        <state line="94" column="7" selection-start="3122" selection-end="3122" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="28" selection-start="70" selection-end="70" vertical-scroll-proportion="0.06238532">
           <folding />
         </state>
       </provider>
