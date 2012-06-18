@@ -8,18 +8,13 @@ var web = {
         var that = this,
             perf = JCL.performance;
 
-        // Initialize Canvas
-        this.canvas = document.getElementById(canvasId);
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
-
-        // Initialize Context
-        this.ctx = this.canvas.getContext("2d");
+        this.canvas = new JCL.Canvas(canvasId, {
+            fullscreen: true
+        });
 
         // Generate Data
         this.points = this.generatePoints(500);
         this.connections = this.generateConnections(100);
-
 
         // Enable Performance Monitoring
         perf.init("JCL-fps-value");
@@ -58,10 +53,12 @@ var web = {
 
     render: function render() {
 
-        var i, max;
+        var i, max, canvas;
+
+        canvas = this.canvas;
 
         // Clear Screen
-        this.clear();
+        canvas.clear();
 
         // Draw Lines
         //max = this.connections.length;
@@ -69,37 +66,23 @@ var web = {
         // Draw Point Halos
         max = this.points.length;
         for (i = 0; i<max; i++) {
-            this.drawCircle(this.points[i], 5, "rgba(60,100,140,0.4)");
+            canvas.drawCircle(this.points[i], 5, "rgba(60,100,140,0.4)");
         }
 
         // Draw Connections
-        this.drawHaystack(this.connections, "rgba(60,100,140,0.3)", 1);
+        canvas.drawHaystack(this.connections, "rgba(60,100,140,0.3)", 1);
 
         // Draw Points
         max = this.points.length;
         for (i = 0; i<max; i++) {
-            this.drawCircle(this.points[i], 1.5, "rgba(220,225,225,1.0)");
+            canvas.drawCircle(this.points[i], 1.5, "rgba(220,225,225,1.0)");
         }
 
-    },
-
-    clear: function clear() {
-        JCL.canvas.clearRect(this.ctx, 0, 0, this.canvas.width, this.canvas.height);
-    },
-
-    drawCircle: function drawCircle(center, radius, fillStyle, strokeStyle, lineWidth) {
-        JCL.canvas.drawCircle(this.ctx, center, radius, fillStyle, strokeStyle, lineWidth);
-    },
-
-    drawHaystack: function drawHaystack(steps, strokeStyle, lineWidth) {
-        JCL.canvas.drawHaystack(this.ctx, steps, strokeStyle, lineWidth);
     }
 
 };
 
 window.onload = function onload() {
-
     web.init("canvas");
-
 };
 
