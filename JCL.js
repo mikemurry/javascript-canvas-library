@@ -171,8 +171,8 @@ JCL.Canvas = function Canvas(canvasId, options) {
     if (this.enabled) {
 
         // Handle Manual Height/Width Options
-        if (options.width) { this.dom.width = window.innerWidth; }
-        if (options.height) { this.dom.height = window.innerHeight; }
+        if (options.width) { this.dom.width = options.width; }
+        if (options.height) { this.dom.height = options.height; }
 
         // Handle Full Screen Option
         if (options.fullscreen) {
