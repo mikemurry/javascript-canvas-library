@@ -1,0 +1,26 @@
+body {
+    background: #080808;
+    font-family: Arial, sans-serif;
+}
+
+canvas {
+    left:0;
+    position:absolute;
+    top:0;
+    z-index:0;
+}
+
+#JCL-fps-counter {
+    background: rgba(0,0,0,0.5);
+    color:#fff;
+    left: 10px;
+    position: absolute;
+    top: 10px;
+    padding:4px 10px;
+    z-index:100;
+
+}
+
+#JCL-fps-value {
+
+}
