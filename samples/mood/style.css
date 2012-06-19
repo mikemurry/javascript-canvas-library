@@ -1,0 +1,30 @@
+body {
+    background: url(images/bg.png) repeat 0 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#page {
+    margin: 20px auto;
+    width: 980px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#canvasFrame {
+    height: 300px;
+    margin: 30px 0;
+    position: relative;
+    width: 980px;
+}
+
+canvas {
+    left:0;
+    position:absolute;
+    top:0;
+}
+
+cite {
+    font-size: 10px;
+}
