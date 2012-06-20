@@ -1,4 +1,4 @@
-var mood = {
+var bipolar = {
 
     init: function init(canvasId, activeId) {
 
@@ -115,7 +115,7 @@ var mood = {
 
     render: function render() {
 
-        var happy, sad, data;
+        var happy, sad, data, x;
 
         if (this.mouseInterval !== this.lastInterval) {
 
@@ -126,42 +126,33 @@ var mood = {
                 happy = this.happy[this.mouseInterval];
                 sad = this.sad[this.mouseInterval];
                 data = this.data[this.mouseInterval];
+                x = this.interval * this.mouseInterval;
 
-                // Draw Strong Good Line
-                this.active.drawPath([
-                    new JCL.Point(this.interval * this.mouseInterval, this.middle),
-                    new JCL.Point(this.interval * this.mouseInterval, happy.y)
-                ], "rgba(205,143,66,1)", 2);
+                // Draw Date Line
+                this.active.drawPath([ new JCL.Point(x, 0), new JCL.Point(x, this.canvas.height)], "rgba(150,150,150,0.3)", 1);
 
-                // Draw Strong Bad Line
-                this.active.drawPath([
-                    new JCL.Point(this.interval * this.mouseInterval, this.middle),
-                    new JCL.Point(this.interval * this.mouseInterval, sad.y)
-                ], "rgba(109,141,111,1)", 2);
-
-                // Draw Weak Good Line
-                this.active.drawPath([
-                    new JCL.Point(this.interval * this.mouseInterval, 0),
-                    new JCL.Point(this.interval * this.mouseInterval, happy.y)
-                ], "rgba(235,173,96,0.6)", 1);
-
-                // Draw Weak Bad Line
-                this.active.drawPath([
-                    new JCL.Point(this.interval * this.mouseInterval, this.canvas.height),
-                    new JCL.Point(this.interval * this.mouseInterval, sad.y)
-                ], "rgba(139,171,141,0.6)", 1);
+                // Draw Axis Lines
+                this.active.drawPath([ new JCL.Point(x, this.middle), new JCL.Point(x, happy.y)], "rgba(205,143,66,1)", 2);
+                this.active.drawPath([ new JCL.Point(x, this.middle), new JCL.Point(x, sad.y)], "rgba(109,141,111,1)", 2);
 
                 // Draw Blips
-                this.active.drawCircle(happy, 7, "rgba(205,143,66,1)");
-                this.active.drawCircle(sad, 7, "rgba(109,141,111,1)");
+                this.active.drawCircle(happy, 7, "rgba(235,173,96,1)", "rgba(205,143,66,1)", 2);
+                this.active.drawCircle(sad, 7, "rgba(139,171,141,1)", "rgba(109,141,111,1)", 2);
 
                 // Draw Values
-                if (this.mouseInterval < Math.floor(this.points * 0.8)) {
-                    this.active.drawText(data[1], "bold 10px Arial, Helvetica" , new JCL.Point(this.interval * this.mouseInterval + 3,0), "top", "left", null, "rgba(205,143,66,1)");
-                    this.active.drawText(data[2], "bold 10px Arial, Helvetica" , new JCL.Point(this.interval * this.mouseInterval + 3,this.canvas.height), "bottom", "left", null, "rgba(109,141,111,1)");
+                if (x > this.canvas.width - 60) {
+                    this.active.drawText(data[1], "bold 10px Arial, Helvetica" , new JCL.Point(x - 10, happy.y), "middle", "right", null, "rgba(90,90,90,1)");
+                    this.active.drawText(data[2], "bold 10px Arial, Helvetica" , new JCL.Point(x - 10, sad.y), "middle", "right", null, "rgba(90,90,90,1)");
                 } else {
-                    this.active.drawText(data[1], "bold 10px Arial, Helvetica" , new JCL.Point(this.interval * this.mouseInterval - 3,0), "top", "right", null, "rgba(205,143,66,1)");
-                    this.active.drawText(data[2], "bold 10px Arial, Helvetica" , new JCL.Point(this.interval * this.mouseInterval - 3,this.canvas.height), "bottom", "right", null, "rgba(109,141,111,1)");
+                    this.active.drawText(data[1], "bold 10px Arial, Helvetica" , new JCL.Point(x + 10, happy.y), "middle", "left", null, "rgba(90,90,90,1)");
+                    this.active.drawText(data[2], "bold 10px Arial, Helvetica" , new JCL.Point(x + 10, sad.y), "middle", "left", null, "rgba(90,90,90,1)");
+                }
+
+                // Draw Date Label
+                if (x < this.canvas.width - 60) {
+                    this.active.drawText(data[0], "bold 10px Arial, Helvetica" , new JCL.Point(x + 3, 0), "top", "left", null, "rgba(90,90,90,1)");
+                } else {
+                    this.active.drawText(data[0], "bold 10px Arial, Helvetica" , new JCL.Point(x - 3, 0), "top", "right", null, "rgba(90,90,90,1)");
                 }
 
             }
@@ -175,7 +166,7 @@ var mood = {
 
 window.onload = function onload() {
 
-    mood.init("bg", "active");
+    bipolar.init("bg", "active");
 
 };
 

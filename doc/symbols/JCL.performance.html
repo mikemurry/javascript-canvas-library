@@ -197,6 +197,8 @@ ul.inheritsList
 	
 	<li><a href="../symbols/JCL.performance.html">JCL.performance</a></li>
 	
+	<li><a href="../symbols/JCL.Point.html">JCL.Point</a></li>
+	
 	<li><a href="../symbols/JCL.renderer.html">JCL.renderer</a></li>
 	
 	<li><a href="../symbols/JCL.utilities.html">JCL.utilities</a></li>
@@ -221,7 +223,7 @@ ul.inheritsList
 				JCL.performance
 				
 				
-					<br /><i>Defined in: </i> <a href="../symbols/src/JCL.js.html">JCL.js</a>.
+					<br /><i>Defined in: </i> <a href="../symbols/src/jcl.js.html">jcl.js</a>.
 				
 			</p>
 
@@ -253,6 +255,51 @@ ul.inheritsList
 			
 
 <!-- ============================== methods summary ======================== -->
+			
+				
+				
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class JCL.performance.">
+					<caption>Method Summary</caption>
+					<thead>
+						<tr>
+							<th scope="col">Method Attributes</th>
+							<th scope="col">Method Name and Description</th>
+						</tr>
+					</thead>
+					<tbody>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">JCL.performance.<b><a href="../symbols/JCL.performance.html#.delta">delta</a></b>()
+								</div>
+								<div class="description">Returns the latest delta (elapsed time since last rendered frame, in seconds).</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">JCL.performance.<b><a href="../symbols/JCL.performance.html#.elapsed">elapsed</a></b>()
+								</div>
+								<div class="description">Returns the elapsed time since performance.init() was first called (in seconds).</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont">JCL.performance.<b><a href="../symbols/JCL.performance.html#.init">init</a></b>(domId)
+								</div>
+								<div class="description">Initializes the performance functions.</div>
+							</td>
+						</tr>
+					
+					</tbody>
+				</table>
+				
+				
+				
 			
 <!-- ============================== events summary ======================== -->
 			
@@ -292,6 +339,118 @@ ul.inheritsList
 
 <!-- ============================== method details ========================= -->		
 			
+				<div class="sectionTitle">
+					Method Detail
+				</div>
+				
+					<a name=".delta"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Number}</span>
+					<span class="light">JCL.performance.</span><b>delta</b>()
+					
+					</div>
+					<div class="description">
+						Returns the latest delta (elapsed time since last rendered frame, in seconds).
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Number}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".elapsed"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Number}</span>
+					<span class="light">JCL.performance.</span><b>elapsed</b>()
+					
+					</div>
+					<div class="description">
+						Returns the elapsed time since performance.init() was first called (in seconds).
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Number}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name=".init"> </a>
+					<div class="fixedFont">&lt;static&gt; 
+					
+					<span class="light">{Number}</span>
+					<span class="light">JCL.performance.</span><b>init</b>(domId)
+					
+					</div>
+					<div class="description">
+						Initializes the performance functions.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>domId</b>
+									
+								</dt>
+								<dd>{String} If a ID string is passed to a DOM element, that element's text will be updated with the current frames per second (FPS).</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Number}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					
+				
+			
 			
 <!-- ============================== event details ========================= -->		
 			
@@ -303,7 +462,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Mon Jun 18 2012 15:56:39 GMT-0700 (PDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Jun 19 2012 17:21:32 GMT-0700 (PDT)
 		</div>
 	</body>
 </html>
