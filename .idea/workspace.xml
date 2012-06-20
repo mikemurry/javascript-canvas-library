@@ -2,26 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="392e0f79-09db-4d11-a92d-ef136e5e9f41" name="Default" comment="">
-      <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\JCL.js" afterPath="$PROJECT_DIR$/jcl.js" />
-      <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\JCL.min.js" afterPath="$PROJECT_DIR$/jcl.min.js" />
-      <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\samples\mood\data.js" afterPath="$PROJECT_DIR$/samples/bipolar/data.js" />
-      <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\samples\mood\images\bg.png" afterPath="$PROJECT_DIR$/samples/bipolar/images/bg.png" />
-      <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\samples\mood\index.html" afterPath="$PROJECT_DIR$/samples/bipolar/index.html" />
-      <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\samples\mood\mood.js" afterPath="$PROJECT_DIR$/samples/bipolar/bipolar.js" />
-      <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\samples\mood\style.css" afterPath="$PROJECT_DIR$/samples/bipolar/style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/files.html" afterPath="$PROJECT_DIR$/doc/files.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="$PROJECT_DIR$/doc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.Canvas.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.Canvas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.performance.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.performance.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.renderer.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.renderer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.utilities.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.utilities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/_global_.html" afterPath="$PROJECT_DIR$/doc/symbols/_global_.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/src/JCL.js.html" afterPath="$PROJECT_DIR$/doc/symbols/src/JCL.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.canvas.js" afterPath="$PROJECT_DIR$/lib/jcl.canvas.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.renderer.js" afterPath="$PROJECT_DIR$/lib/jcl.renderer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/chronograph/index.html" afterPath="$PROJECT_DIR$/samples/chronograph/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/constellations/index.html" afterPath="$PROJECT_DIR$/samples/constellations/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/entanglement/index.html" afterPath="$PROJECT_DIR$/samples/entanglement/index.html" />
     </list>
     <ignored path="vent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -91,7 +75,7 @@
       <file leaf-file-name="bipolar.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/samples/bipolar/bipolar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="23" selection-start="310" selection-end="310" vertical-scroll-proportion="-3.857143">
+            <state line="153" column="24" selection-start="6030" selection-end="6030" vertical-scroll-proportion="0.52672607">
               <folding />
             </state>
           </provider>
@@ -197,10 +181,6 @@
               <option name="myItemId" value="samples" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bipolar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -213,6 +193,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="samples" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bipolar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -367,29 +351,33 @@
       <created>1340146722090</created>
       <updated>1340146722090</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Improvements to Bipolar sample.">
+      <created>1340151910371</created>
+      <updated>1340151910371</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3386752" sideWeight="0.9913386" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11846318" sideWeight="0.6613248" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.11846318" sideWeight="0.67094016" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32905984" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3386752" sideWeight="0.9913386" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12593383" sideWeight="0.6613248" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.12593383" sideWeight="0.67094016" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JsTestDriver Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290993" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -570,7 +558,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/samples/bipolar/bipolar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="23" selection-start="310" selection-end="310" vertical-scroll-proportion="-3.857143">
+        <state line="153" column="24" selection-start="6030" selection-end="6030" vertical-scroll-proportion="0.52672607">
           <folding />
         </state>
       </provider>
