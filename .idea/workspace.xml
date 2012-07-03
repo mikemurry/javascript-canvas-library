@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="392e0f79-09db-4d11-a92d-ef136e5e9f41" name="Default" comment="">
+    <list default="true" id="392e0f79-09db-4d11-a92d-ef136e5e9f41" name="Default" comment="To be documented.">
       <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\JCL.js" afterPath="$PROJECT_DIR$/jcl.js" />
       <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\JCL.min.js" afterPath="$PROJECT_DIR$/jcl.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -16,9 +16,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/_global_.html" afterPath="$PROJECT_DIR$/doc/symbols/_global_.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/src/JCL.js.html" afterPath="$PROJECT_DIR$/doc/symbols/src/JCL.js.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.canvas.js" afterPath="$PROJECT_DIR$/lib/jcl.canvas.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.js" afterPath="$PROJECT_DIR$/lib/jcl.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.performance.js" afterPath="$PROJECT_DIR$/lib/jcl.performance.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.point.js" afterPath="$PROJECT_DIR$/lib/jcl.point.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.renderer.js" afterPath="$PROJECT_DIR$/lib/jcl.renderer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.utilities.js" afterPath="$PROJECT_DIR$/lib/jcl.utilities.js" />
     </list>
     <ignored path="vent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,17 +40,7 @@
     <favorites_list name="vent" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="jcl.canvas.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/jcl.canvas.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="111" column="27" selection-start="3433" selection-end="3433" vertical-scroll-proportion="0.16879432">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -67,10 +58,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/samples/entanglement/entanglement.js" />
         <option value="$PROJECT_DIR$/samples/chronograph/chronograph.js" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/lib/jcl.point.js" />
         <option value="$PROJECT_DIR$/samples/mood/data.js" />
         <option value="$PROJECT_DIR$/samples/mood/style.css" />
         <option value="$PROJECT_DIR$/samples/mood/mood.js" />
@@ -80,16 +69,19 @@
         <option value="$PROJECT_DIR$/samples/bipolar/bipolar.js" />
         <option value="$PROJECT_DIR$/jcl.js" />
         <option value="$PROJECT_DIR$/lib/jcl.js" />
+        <option value="$PROJECT_DIR$/lib/jcl.point.js" />
+        <option value="$PROJECT_DIR$/lib/jcl.canvas.js" />
+        <option value="$PROJECT_DIR$/lib/jcl.utilities.js" />
         <option value="$PROJECT_DIR$/lib/jcl.renderer.js" />
         <option value="$PROJECT_DIR$/lib/jcl.performance.js" />
-        <option value="$PROJECT_DIR$/lib/jcl.canvas.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="3" />
-    <option name="width" value="1134" />
-    <option name="height" value="1078" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1296" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -117,6 +109,16 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -145,64 +147,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bipolar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -337,19 +283,23 @@
       <created>1340151910371</created>
       <updated>1340151910371</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="To be documented.">
+      <created>1341085829041</created>
+      <updated>1341085829041</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="3" y="0" width="1134" height="1078" extended-state="0" />
+    <frame x="1912" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1906318" sideWeight="0.9913386" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20833333" sideWeight="0.9913386" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.11754685" sideWeight="0.8093682" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Phing Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.102106966" sideWeight="0.7916667" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21268657" sideWeight="0.5174292" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21268657" sideWeight="0.28431374" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19124797" sideWeight="0.4797619" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19124797" sideWeight="0.5119048" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32963374" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -447,16 +397,6 @@
         <state line="21" column="17" selection-start="645" selection-end="645" vertical-scroll-proportion="0.6826004" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/jcl.point.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="23" selection-start="27" selection-end="27" vertical-scroll-proportion="0.03057554" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/jcl.utilities.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="0" selection-start="56" selection-end="367" vertical-scroll-proportion="0.17926186" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/samples/entanglement/entanglement.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="11" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0" />
@@ -509,20 +449,42 @@
         <state line="20" column="17" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/jcl.point.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="105" selection-start="2392" selection-end="2492" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/jcl.performance.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="5" selection-start="557" selection-end="557" vertical-scroll-proportion="0.0" />
+        <state line="34" column="31" selection-start="630" selection-end="630" vertical-scroll-proportion="0.70920247">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/jcl.renderer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="63" selection-start="1412" selection-end="1412" vertical-scroll-proportion="0.60445684" />
+        <state line="5" column="0" selection-start="65" selection-end="65" vertical-scroll-proportion="0.10429448">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/jcl.utilities.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="4" selection-start="60" selection-end="367" vertical-scroll-proportion="0.12515338">
+          <folding />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/jcl.canvas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="111" column="27" selection-start="3433" selection-end="3433" vertical-scroll-proportion="0.16879432">
-          <folding />
+        <state line="271" column="20" selection-start="9366" selection-end="9366" vertical-scroll-proportion="5.744389">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

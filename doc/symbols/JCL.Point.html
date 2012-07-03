@@ -212,7 +212,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Function Namespace JCL.Point
+				Class JCL.Point
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -220,7 +220,7 @@ ul.inheritsList
 				
 				
 			
-				JCL.Point
+				The point class represents a point in 2d (x,y) or 3d (x,y,z) space.
 				
 				
 					<br /><i>Defined in: </i> <a href="../symbols/src/jcl.js.html">jcl.js</a>.
@@ -230,7 +230,7 @@ ul.inheritsList
 <!-- ============================== constructor summary ==================== -->			
 			
 			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class JCL.Point.">
-				<caption>Function Namespace Summary</caption>
+				<caption>Class Summary</caption>
 				<thead>
 					<tr>
 						<th scope="col">Constructor Attributes</th>
@@ -289,6 +289,15 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JCL.Point.html#get">get</a></b>()
+								</div>
+								<div class="description">Returns a simplified object representing the point's coordinates.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/JCL.Point.html#lerp">lerp</a></b>(a, ratio)
 								</div>
 								<div class="description">Interpolates between two points {x,y}.</div>
@@ -298,9 +307,27 @@ ul.inheritsList
 						<tr>
 							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JCL.Point.html#set">set</a></b>(x, y, z)
+								</div>
+								<div class="description">Calculates the angle between two points.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
 								<div class="fixedFont"><b><a href="../symbols/JCL.Point.html#tangent">tangent</a></b>(angle, distance)
 								</div>
 								<div class="description">Calculates a point {x,y} at the specified angle and distance from the base point.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JCL.Point.html#toString">toString</a></b>()
+								</div>
+								<div class="description">Prints the current coordinates as a string.</div>
 							</td>
 						</tr>
 					
@@ -317,7 +344,7 @@ ul.inheritsList
 			
 			<div class="details"><a name="constructor"> </a>
 				<div class="sectionTitle">
-					Function Namespace Detail
+					Class Detail
 				</div>
 				
 				<div class="fixedFont">
@@ -340,25 +367,32 @@ ul.inheritsList
 								 <b>x</b>
 								
 							</dt>
-								<dd></dd>
+								<dd>{Number} The x coordinate.</dd>
 						
 							<dt>
 								 <b>y</b>
 								
 							</dt>
-								<dd></dd>
+								<dd>{Number} The y coordinate.</dd>
 						
 							<dt>
 								 <b>z</b>
 								
 							</dt>
-								<dd></dd>
+								<dd>{Number} The z coordinate.</dd>
 						
 						</dl>
 					
 					
 					
 					
+					
+						<dl class="detailList">
+						<dt class="heading">Returns:</dt>
+						
+								<dd><span class="light fixedFont">{Object}</span> </dd>
+						
+						</dl>
 					
 					
 					
@@ -461,6 +495,38 @@ ul.inheritsList
 
 					<hr />
 				
+					<a name="get"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>get</b>()
+					
+					</div>
+					<div class="description">
+						Returns a simplified object representing the point's coordinates.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
 					<a name="lerp"> </a>
 					<div class="fixedFont">
 					
@@ -502,6 +568,61 @@ ul.inheritsList
 							<dt class="heading">Returns:</dt>
 							
 								<dd><span class="light fixedFont">{Object|Undefined}</span> The interpolated point {x,y}.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="set"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>set</b>(x, y, z)
+					
+					</div>
+					<div class="description">
+						Calculates the angle between two points.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>x</b>
+									
+								</dt>
+								<dd>{Number} The x coordinate.</dd>
+							
+								<dt>
+									<b>y</b>
+									
+								</dt>
+								<dd>{Number} The y coordinate.</dd>
+							
+								<dt>
+									<b>z</b>
+									
+								</dt>
+								<dd>{Number} The z coordinate.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> The resulting point object.</dd>
 							
 							</dl>
 						
@@ -557,6 +678,38 @@ ul.inheritsList
 						
 						
 
+					<hr />
+				
+					<a name="toString"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{String}</span>
+					<b>toString</b>()
+					
+					</div>
+					<div class="description">
+						Prints the current coordinates as a string.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
 					
 				
 			
@@ -571,7 +724,7 @@ ul.inheritsList
 <!-- ============================== footer ================================= -->
 		<div class="fineprint" style="clear:both">
 			
-			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Wed Jun 27 2012 18:04:45 GMT-0700 (PDT)
+			Documentation generated by <a href="http://code.google.com/p/jsdoc-toolkit/" target="_blank">JsDoc Toolkit</a> 2.4.0 on Tue Jul 03 2012 16:35:09 GMT-0700 (PDT)
 		</div>
 	</body>
 </html>
