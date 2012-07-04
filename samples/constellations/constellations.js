@@ -16,11 +16,8 @@ var constellations = {
         this.points = this.generatePoints(500);
         this.connections = this.generateConnections(100);
 
-        // Enable Performance Monitoring
-        perf.init("JCL-fps-value");
-
         // Register Render Function
-        JCL.renderer.registerRender(function() {
+        JCL.renderer.add(function() {
             that.render();
         });
 

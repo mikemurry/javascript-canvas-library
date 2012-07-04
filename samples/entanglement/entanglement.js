@@ -28,14 +28,11 @@ var entanglement = {
         this.connections = this.loadConnections(this.numConnections, this.points);
         this.spikes = [];
 
-        // Enable Performance Monitoring
-        perf.init("JCL-fps-value");
-
         // Initialize Mouse
         this.mouse = new JCL.Point(0,0);
 
         // Register Render Function
-        JCL.renderer.registerRender(function() {
+        JCL.renderer.add(function() {
             that.render();
         });
 
@@ -88,7 +85,7 @@ var entanglement = {
 
         var delta, active;
 
-        delta = JCL.performance.delta();
+        delta = JCL.performance.delta;
         active = this.active;
 
         active.clear();

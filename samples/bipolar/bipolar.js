@@ -64,8 +64,8 @@ var bipolar = {
         this.sad.push( new JCL.Point(0, this.middle));
 
         // Draw Fill
-        this.canvas.drawShape(this.happy, null, 1, "rgba(235,173,96,0.6)");
-        this.canvas.drawShape(this.sad, null, 1, "rgba(139,171,141,0.6)");
+        this.canvas.drawShape(this.happy, "rgba(235,173,96,0.6)");
+        this.canvas.drawShape(this.sad, "rgba(139,171,141,0.6)");
 
         // Draw Axis
         this.canvas.drawPath([new JCL.Point(0, this.middle-0.5), new JCL.Point(this.canvas.width, this.middle-0.5)], "rgba(150,150,150,1)", 1);
@@ -73,7 +73,7 @@ var bipolar = {
         // Draw Year Lines
         this.canvas.drawHaystack(this.getYearAxis(), "rgba(150,150,150,0.3)", 1);
         for (i = 0; i < this.years.length; i++) {
-            this.canvas.drawText(this.years[i].year, "bold 10px Arial, Helvetica" , new JCL.Point(this.interval * this.years[i].index + 3,this.middle - 2), "bottom", "left", null, "rgba(90,90,90,1)");
+            this.canvas.drawText(this.years[i].year, "bold 10px Arial, Helvetica" , new JCL.Point(this.interval * this.years[i].index + 3,this.middle - 2), "bottom", "left", "rgba(90,90,90,1)");
         }
 
         // Hookup Mouse Move (set active interval)
@@ -86,7 +86,7 @@ var bipolar = {
             that.mouseInterval = null;
         };
 
-        JCL.renderer.registerRender(this.render.bind(this));
+        JCL.renderer.add(this.render.bind(this));
 
     },
 
@@ -141,16 +141,16 @@ var bipolar = {
 
                 // Draw Values
                 if (x > this.canvas.width - 60) {
-                    this.active.drawText(data[1], "bold 10px Arial, Helvetica" , new JCL.Point(x - 10, happy.y), "middle", "right", null, "rgba(90,90,90,1)");
-                    this.active.drawText(data[2], "bold 10px Arial, Helvetica" , new JCL.Point(x - 10, sad.y), "middle", "right", null, "rgba(90,90,90,1)");
+                    this.active.drawText(data[1], "bold 10px Arial, Helvetica" , new JCL.Point(x - 10, happy.y), "middle", "right", "rgba(90,90,90,1)");
+                    this.active.drawText(data[2], "bold 10px Arial, Helvetica" , new JCL.Point(x - 10, sad.y), "middle", "right", "rgba(90,90,90,1)");
                 } else {
-                    this.active.drawText(data[1], "bold 10px Arial, Helvetica" , new JCL.Point(x + 10, happy.y), "middle", "left", null, "rgba(90,90,90,1)");
-                    this.active.drawText(data[2], "bold 10px Arial, Helvetica" , new JCL.Point(x + 10, sad.y), "middle", "left", null, "rgba(90,90,90,1)");
+                    this.active.drawText(data[1], "bold 10px Arial, Helvetica" , new JCL.Point(x + 10, happy.y), "middle", "left", "rgba(90,90,90,1)");
+                    this.active.drawText(data[2], "bold 10px Arial, Helvetica" , new JCL.Point(x + 10, sad.y), "middle", "left", "rgba(90,90,90,1)");
                 }
 
                 // Draw Date Label
                 if (x < this.canvas.width - 60) {
-                    this.active.drawText(data[0], "bold 10px Arial, Helvetica" , new JCL.Point(x + 3, 0), "top", "left", null, "rgba(90,90,90,1)");
+                    this.active.drawText(data[0], "bold 10px Arial, Helvetica" , new JCL.Point(x + 3, 0), "top", "left", "rgba(90,90,90,1)");
                 } else {
                     this.active.drawText(data[0], "bold 10px Arial, Helvetica" , new JCL.Point(x - 3, 0), "top", "right", null, "rgba(90,90,90,1)");
                 }

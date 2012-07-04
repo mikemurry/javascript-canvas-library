@@ -45,14 +45,11 @@ var chronograph = {
             this.strength.push(this.calculateStack(this.center, this.pointCount, i, this.ringSize * -1, this.innerRing + this.ringSize - 1, "random"));
         }
 
-        // Enable Performance Monitoring
-        perf.init("JCL-fps-value");
-
         // Initialize Mouse
         this.mouse = new JCL.Point(0,0);
 
         // Register Render Function
-        JCL.renderer.registerRender(function() {
+        JCL.renderer.add(function() {
             that.render();
         });
 
