@@ -5,23 +5,6 @@
       <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\JCL.js" afterPath="$PROJECT_DIR$/jcl.js" />
       <change type="MOVED" beforePath="C:\Users\Mike\Documents\GitHub\JavaScript-Canvas-Library\JCL.min.js" afterPath="$PROJECT_DIR$/jcl.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/files.html" afterPath="$PROJECT_DIR$/doc/files.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.html" afterPath="$PROJECT_DIR$/doc/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.Canvas.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.Canvas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.Point.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.Point.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.performance.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.performance.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.renderer.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.renderer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/JCL.utilities.html" afterPath="$PROJECT_DIR$/doc/symbols/JCL.utilities.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/_global_.html" afterPath="$PROJECT_DIR$/doc/symbols/_global_.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/symbols/src/JCL.js.html" afterPath="$PROJECT_DIR$/doc/symbols/src/JCL.js.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.canvas.js" afterPath="$PROJECT_DIR$/lib/jcl.canvas.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/jcl.performance.js" afterPath="$PROJECT_DIR$/lib/jcl.performance.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/bipolar/bipolar.js" afterPath="$PROJECT_DIR$/samples/bipolar/bipolar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/bipolar/index.html" afterPath="$PROJECT_DIR$/samples/bipolar/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/chronograph/chronograph.js" afterPath="$PROJECT_DIR$/samples/chronograph/chronograph.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/constellations/constellations.js" afterPath="$PROJECT_DIR$/samples/constellations/constellations.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/samples/entanglement/entanglement.js" afterPath="$PROJECT_DIR$/samples/entanglement/entanglement.js" />
     </list>
     <ignored path="vent.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,7 +29,7 @@
       <file leaf-file-name="bipolar.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/samples/bipolar/bipolar.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="24" selection-start="672" selection-end="672" vertical-scroll-proportion="0.6507177">
+            <state line="26" column="23" selection-start="723" selection-end="723" vertical-scroll-proportion="0.054226477">
               <folding />
             </state>
           </provider>
@@ -157,102 +140,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="entanglement" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="chronograph" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="samples" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bipolar" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jcl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="JavaScript-Canvas-Library" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -414,7 +301,11 @@
       <created>1341358634465</created>
       <updated>1341358634465</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Updates samples for latest library refactoring.">
+      <created>1341360066502</created>
+      <updated>1341360066502</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -480,7 +371,7 @@
     <option name="SHOW_VCS_ERROR_NOTIFICATIONS" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored some code. Improved documentation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updates samples for latest library refactoring." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -516,6 +407,7 @@
     <MESSAGE value="Latest library.&#10;" />
     <MESSAGE value="To be documented." />
     <MESSAGE value="Refactored some code. Improved documentation." />
+    <MESSAGE value="Updates samples for latest library refactoring." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -624,7 +516,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/samples/bipolar/bipolar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="24" selection-start="672" selection-end="672" vertical-scroll-proportion="0.6507177">
+        <state line="26" column="23" selection-start="723" selection-end="723" vertical-scroll-proportion="0.054226477">
           <folding />
         </state>
       </provider>
