@@ -2,7 +2,7 @@
 
 <project name="JCLBuild" default="dist">
 
-    <property name="includes" value="jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.canvas.js, jcl.performance.js, jcl.point.js" />
+    <property name="includes" value="jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.Canvas.js, jcl.performance.js, jcl.Point.js, jcl.Rectangle.js" />
 
     <target name="prepare">
         <delete dir="temp" />

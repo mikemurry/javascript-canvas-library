@@ -5,7 +5,7 @@
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="generator" content="JsDoc Toolkit" />
 		
-		<title>JsDoc Reference - JCL</title>
+		<title>JsDoc Reference - JCL.Rectangle</title>
 
 		<style type="text/css">
 			/* default.css */
@@ -214,7 +214,7 @@ ul.inheritsList
 <!-- ============================== class title ============================ -->
 			<h1 class="classTitle">
 				
-				Namespace JCL
+				Class JCL.Rectangle
 			</h1>
 
 <!-- ============================== class summary ========================== -->			
@@ -222,7 +222,7 @@ ul.inheritsList
 				
 				
 			
-				JCL
+				The Rectangle class represents a rectangle in 2d (x,y) or 3d (x,y,z) space.
 				
 				
 					<br /><i>Defined in: </i> <a href="../symbols/src/jcl.js.html">jcl.js</a>.
@@ -231,8 +231,8 @@ ul.inheritsList
 
 <!-- ============================== constructor summary ==================== -->			
 			
-			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class JCL.">
-				<caption>Namespace Summary</caption>
+			<table class="summaryTable" cellspacing="0" summary="A summary of the constructor documented in the class JCL.Rectangle.">
+				<caption>Class Summary</caption>
 				<thead>
 					<tr>
 						<th scope="col">Constructor Attributes</th>
@@ -244,7 +244,7 @@ ul.inheritsList
 						<td class="attributes">&nbsp;</td>
 						<td class="nameDescription" >
 							<div class="fixedFont">
-								<b><a href="../symbols/JCL.html#constructor">JCL</a></b>
+								<b><a href="../symbols/JCL.Rectangle.html#constructor">JCL.Rectangle</a></b>(x, y, z, width, height, depth)
 							</div>
 							<div class="description"></div>
 						</td>
@@ -255,17 +255,12 @@ ul.inheritsList
 
 <!-- ============================== properties summary ===================== -->
 			
-				
-				
-				
-				
-			
 
 <!-- ============================== methods summary ======================== -->
 			
 				
 				
-				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class JCL.">
+				<table class="summaryTable" cellspacing="0" summary="A summary of the methods documented in the class JCL.Rectangle.">
 					<caption>Method Summary</caption>
 					<thead>
 						<tr>
@@ -276,11 +271,38 @@ ul.inheritsList
 					<tbody>
 					
 						<tr>
-							<td class="attributes">&lt;static&gt; &nbsp;</td>
+							<td class="attributes">&nbsp;</td>
 							<td class="nameDescription">
-								<div class="fixedFont">JCL.<b><a href="../symbols/JCL.html#.namespace">namespace</a></b>(ns)
+								<div class="fixedFont"><b><a href="../symbols/JCL.Rectangle.html#center">center</a></b>(point)
 								</div>
-								<div class="description">Safely augments the JCL namespace to include the specified path.</div>
+								<div class="description">Calculates the center point of the rectangle, or if a point is passed in, adjusts the rectangle's location to match the provided center point.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JCL.Rectangle.html#get">get</a></b>()
+								</div>
+								<div class="description">Returns a simplified object representing the point's coordinates.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JCL.Rectangle.html#set">set</a></b>(x, y, z, width, height, depth)
+								</div>
+								<div class="description">Sets the location and size of the rectangle.</div>
+							</td>
+						</tr>
+					
+						<tr>
+							<td class="attributes">&nbsp;</td>
+							<td class="nameDescription">
+								<div class="fixedFont"><b><a href="../symbols/JCL.Rectangle.html#toString">toString</a></b>()
+								</div>
+								<div class="description">Prints the current coordinates as a string.</div>
 							</td>
 						</tr>
 					
@@ -297,11 +319,11 @@ ul.inheritsList
 			
 			<div class="details"><a name="constructor"> </a>
 				<div class="sectionTitle">
-					Namespace Detail
+					Class Detail
 				</div>
 				
 				<div class="fixedFont">
-						<b>JCL</b>
+						<b>JCL.Rectangle</b>(x, y, z, width, height, depth)
 				</div>
 				
 				<div class="description">
@@ -313,9 +335,57 @@ ul.inheritsList
 				
 				
 					
+						<dl class="detailList">
+						<dt class="heading">Parameters:</dt>
+						
+							<dt>
+								 <b>x</b>
+								
+							</dt>
+								<dd>{Number} The x coordinate.</dd>
+						
+							<dt>
+								 <b>y</b>
+								
+							</dt>
+								<dd>{Number} The y coordinate.</dd>
+						
+							<dt>
+								 <b>z</b>
+								
+							</dt>
+								<dd>{Number} The z coordinate.</dd>
+						
+							<dt>
+								 <b>width</b>
+								
+							</dt>
+								<dd>{Number} The width.</dd>
+						
+							<dt>
+								 <b>height</b>
+								
+							</dt>
+								<dd>{Number} The height.</dd>
+						
+							<dt>
+								 <b>depth</b>
+								
+							</dt>
+								<dd>{Number} The depth.</dd>
+						
+						</dl>
 					
 					
 					
+					
+					
+						<dl class="detailList">
+						<dt class="heading">Returns:</dt>
+						
+								<dd><span class="light fixedFont">{Object}</span> </dd>
+						
+						</dl>
 					
 					
 					
@@ -332,15 +402,15 @@ ul.inheritsList
 					Method Detail
 				</div>
 				
-					<a name=".namespace"> </a>
-					<div class="fixedFont">&lt;static&gt; 
+					<a name="center"> </a>
+					<div class="fixedFont">
 					
 					<span class="light">{Object}</span>
-					<span class="light">JCL.</span><b>namespace</b>(ns)
+					<b>center</b>(point)
 					
 					</div>
 					<div class="description">
-						Safely augments the JCL namespace to include the specified path.
+						Calculates the center point of the rectangle, or if a point is passed in, adjusts the rectangle's location to match the provided center point.
 						
 						
 					</div>
@@ -352,10 +422,10 @@ ul.inheritsList
 							<dt class="heading">Parameters:</dt>
 							
 								<dt>
-									<b>ns</b>
+									<b>point</b>
 									
 								</dt>
-								<dd>{String} A dot separated namespace. Prefixing with "JCL." is optional.</dd>
+								<dd></dd>
 							
 							</dl>
 						
@@ -366,7 +436,144 @@ ul.inheritsList
 							<dl class="detailList">
 							<dt class="heading">Returns:</dt>
 							
-								<dd><span class="light fixedFont">{Object}</span> Returns the JCL object.</dd>
+								<dd><span class="light fixedFont">{Object}</span> The resulting point.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="get"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>get</b>()
+					
+					</div>
+					<div class="description">
+						Returns a simplified object representing the point's coordinates.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> </dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="set"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{Object}</span>
+					<b>set</b>(x, y, z, width, height, depth)
+					
+					</div>
+					<div class="description">
+						Sets the location and size of the rectangle.
+						
+						
+					</div>
+					
+					
+					
+						
+							<dl class="detailList">
+							<dt class="heading">Parameters:</dt>
+							
+								<dt>
+									<b>x</b>
+									
+								</dt>
+								<dd>{Number} The x coordinate.</dd>
+							
+								<dt>
+									<b>y</b>
+									
+								</dt>
+								<dd>{Number} The y coordinate.</dd>
+							
+								<dt>
+									<b>z</b>
+									
+								</dt>
+								<dd>{Number} The z coordinate.</dd>
+							
+								<dt>
+									<b>width</b>
+									
+								</dt>
+								<dd>{Number} The width.</dd>
+							
+								<dt>
+									<b>height</b>
+									
+								</dt>
+								<dd>{Number} The height.</dd>
+							
+								<dt>
+									<b>depth</b>
+									
+								</dt>
+								<dd>{Number} The depth.</dd>
+							
+							</dl>
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{Object}</span> The resulting rectangle object.</dd>
+							
+							</dl>
+						
+						
+						
+
+					<hr />
+				
+					<a name="toString"> </a>
+					<div class="fixedFont">
+					
+					<span class="light">{String}</span>
+					<b>toString</b>()
+					
+					</div>
+					<div class="description">
+						Prints the current coordinates as a string.
+						
+						
+					</div>
+					
+					
+					
+						
+						
+						
+						
+						
+							<dl class="detailList">
+							<dt class="heading">Returns:</dt>
+							
+								<dd><span class="light fixedFont">{String}</span> </dd>
 							
 							</dl>
 						
