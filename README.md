@@ -7,7 +7,7 @@ Overview
 
 The JavaScript Canvas Library is a JavaScript helper library to assist with canvas visualizations. Major components include:
 
-**Classess**
+**Classes**
 - Canvas Class *(jcl.Canvas)*
 - Point Class *(jcl.Point)*
 - Rectangle Class *(jcl.Rectangle)*

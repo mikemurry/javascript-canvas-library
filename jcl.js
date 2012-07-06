@@ -450,6 +450,16 @@ JCL.Canvas.prototype = {
         return this;
     },
 
+    drawImage: function drawRemoteImage(url, x, y, width, height) {
+        var i = new Image(), that = this;
+        i.onload = function() {
+            that.ctx.drawImage(i, x, y, width, height);
+        }
+        i.src = url;
+        return this;
+
+    },
+
     /**
      * @description Draws the canvas at the specified rectangle.
      * @param x {Number} The x coordinate to start clearing from.
@@ -655,13 +665,13 @@ JCL.Point.prototype = {
  * @return {Object}
  */
 
-JCL.Rectangle = function Point(x, y, z, width, height, depth) {
+JCL.Rectangle = function Rectangle(x, y, z, width, height, depth) {
     return this.set(x,y,z,width,height,depth);
 };
 
 JCL.Rectangle.prototype = {
 
-    constructor: "Rect",
+    constructor: "Rectangle",
 
     /**
      * @description Sets the location and size of the rectangle.
@@ -678,9 +688,9 @@ JCL.Rectangle.prototype = {
         this.x = x || 0;
         this.y = y || 0;
         this.z = z || 0;
-        this.width = x || 0;
-        this.height = y || 0;
-        this.depth = z || 0;
+        this.width = width || 0;
+        this.height = height || 0;
+        this.depth = depth || 0;
         return this;
     },
 
@@ -699,7 +709,7 @@ JCL.Rectangle.prototype = {
      */
 
     toString: function toString() {
-        return "Point( x:" + this.x + ", y:" + this.y + ", z:" + this.z + ", width:" + this.width + ", height:" + this.height + ", depth:" + this.depth + ")";
+        return "Rectangle( x:" + this.x + ", y:" + this.y + ", z:" + this.z + ", width:" + this.width + ", height:" + this.height + ", depth:" + this.depth + ")";
     },
 
     /**
