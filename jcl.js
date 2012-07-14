@@ -250,12 +250,12 @@ JCL.Canvas = function Canvas(canvasId, options) {
 
         // Handle Margins, Calculate Area
         options.margins = options.margins || [0,0,0,0];
-        this.area = {
-            x: options.margins[3],
-            y: options.margins[0],
-            width: this.width - options.margins[1] - options.margins[3],
-            height: this.height - options.margins[0] - options.margins[2]
-        };
+        this.area = new JCL.Rectangle(
+            options.margins[3],
+            options.margins[0],
+            this.width - options.margins[1] - options.margins[3],
+            this.height - options.margins[0] - options.margins[2]
+        );
 
     } else { JCL.warn("Canvas (ID: '" + canvasId + "') cannot be enabled."); }
 
@@ -454,7 +454,7 @@ JCL.Canvas.prototype = {
         var i = new Image(), that = this;
         i.onload = function() {
             that.ctx.drawImage(i, x, y, width, height);
-        }
+        };
         i.src = url;
         return this;
 
@@ -648,6 +648,11 @@ JCL.Point.prototype = {
             } else { JCL.warn("Could not interpolate point. Invalid point."); }
         } else { JCL.warn("Could not interpolate point. Missing required data."); }
         return undefined;
+    },
+
+    translate: function translate(x, y, z) {
+        var current = this.get();
+        return this.set(current.x + (x || 0), current.y + (y || 0), current.z + (z || 0));
     }
 
 };/**
@@ -656,17 +661,17 @@ JCL.Point.prototype = {
 
 /**
  * @class The Rectangle class represents a rectangle in 2d (x,y) or 3d (x,y,z) space.
- * @param x {Number} The x coordinate.
- * @param y {Number} The y coordinate.
- * @param z {Number} The z coordinate.
- * @param width {Number} The width.
- * @param height {Number} The height.
- * @param depth {Number} The depth.
- * @return {Object}
+ * @param a {Number} The x coordinate.
+ * @param b {Number} The y coordinate.
+ * @param c {Number} If 4 arguments, the width. If 6 arguments, the z coordinate.
+ * @param d {Number} If 4 arguments, the height. If 6 arguments, the width.
+ * @param e {Number} If 6 arguments, the height.
+ * @param f {Number} If 6 arguments, the depth.
+ * @return {Object} The resulting rectangle object.
  */
 
-JCL.Rectangle = function Rectangle(x, y, z, width, height, depth) {
-    return this.set(x,y,z,width,height,depth);
+JCL.Rectangle = function Rectangle(a, b, c, d, e, f) {
+    return this.set(a,b,c,d,e,f);
 };
 
 JCL.Rectangle.prototype = {
@@ -675,23 +680,44 @@ JCL.Rectangle.prototype = {
 
     /**
      * @description Sets the location and size of the rectangle.
-     * @param x {Number} The x coordinate.
-     * @param y {Number} The y coordinate.
-     * @param z {Number} The z coordinate.
-     * @param width {Number} The width.
-     * @param height {Number} The height.
-     * @param depth {Number} The depth.
+     * @param a {Number} The x coordinate.
+     * @param b {Number} The y coordinate.
+     * @param c {Number} If 4 arguments, the width. If 6 arguments, the z coordinate.
+     * @param d {Number} If 4 arguments, the height. If 6 arguments, the width.
+     * @param e {Number} If 6 arguments, the height.
+     * @param f {Number} If 6 arguments, the depth.
      * @return {Object} The resulting rectangle object.
      */
 
-    set: function set(x,y,z,width,height,depth) {
+    set: function set(a,b,c,d,e,f) {
+
+        var x, y, z, width, height, depth;
+
+        if (a && b && c && d && !e && !f) {
+            // Assume arguments (x, y, width, height);
+            x = a;
+            y = b;
+            width = c;
+            height = d;
+        } else {
+            // Assume arguments (x, y, z, width, height, depth)
+            x = a;
+            y = b;
+            z = c;
+            width = d;
+            height = e;
+            depth = d;
+        }
+
         this.x = x || 0;
         this.y = y || 0;
         this.z = z || 0;
         this.width = width || 0;
         this.height = height || 0;
         this.depth = depth || 0;
+
         return this;
+
     },
 
     /**
@@ -723,6 +749,77 @@ JCL.Rectangle.prototype = {
         } else {
             return new JCL.Point(this.x + (this.width / 2), this.y + (this.height / 2), this.z + (this.depth / 2));
         }
+    }
+
+};/**
+ * @namespace JCL.Chart
+ */
+
+/**
+ * @class The Chart class makes it easier to map data points based on values instead of physical canvas coordinates.
+ * @param area {Object} The rectangle or canvas that specifies the boundaries of the chart.
+ * @param options {Object}
+ * @return {Object}
+ */
+
+JCL.Chart = function Chart(area, options) {
+
+    options = options || {};
+    this.options = options;
+
+    if (area) {
+
+        // Initialize Area
+        if (area instanceof JCL.Canvas) {
+            this.area = new JCL.Rectangle(0, 0, area.width, area.height);
+        } else if (area instanceof JCL.Rectangle) {
+            this.area = area;
+        }
+
+        // Initialize X and Y Axis
+        options.xaxis = options.xaxis || {};
+        options.yaxis = options.yaxis || {};
+        this.xaxis = {
+            min: options.xaxis.min || 0,
+            max: options.xaxis.max || 100,
+            interval: options.xaxis.interval || 10,
+            type: options.xaxis.type || null
+        };
+        this.yaxis = {
+            min: options.yaxis.min || 0,
+            max: options.yaxis.max || 100,
+            interval: options.yaxis.interval || 10
+        };
+
+    } else {
+        JCL.error("Cannot create a Chart without a Canvas or Rectangle specified as the area.")
+    }
+
+    console.dir(this);
+
+    return this;
+
+};
+
+JCL.Chart.prototype = {
+
+    plot: function plot(x, y) {
+
+        var intervalWidth;
+
+        if (this.xaxis.type === "column") {
+            intervalWidth = this.area.width / (this.xaxis.max - this.xaxis.min + 1);
+            return new JCL.Point(
+                this.area.x + ((x - this.xaxis.min) * Math.floor(intervalWidth)) + (intervalWidth/2),
+                this.area.y + this.area.height - (((y - this.yaxis.min)/(this.yaxis.max - this.yaxis.min)) * this.area.height)
+            );
+        }
+
+        return new JCL.Point(
+            this.area.x + (((x - this.xaxis.min) / (this.xaxis.max - this.xaxis.min)) * this.area.width),
+            this.area.y + this.area.height - (((y - this.yaxis.min)/(this.yaxis.max - this.yaxis.min)) * this.area.height)
+        );
+
     }
 
 };
