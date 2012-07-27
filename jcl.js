@@ -129,6 +129,33 @@ JCL.utilities = {
         temp.innerHTML = htmlStr;
         while (temp.firstChild) { frag.appendChild(temp.firstChild); }
         return frag;
+    },
+
+    /**
+     * @description Returns the minimum and maximum value of a given collection.
+     * @param collection {Array} The array to iterate over.
+     * @return {Object} The resulting min and max.
+     */
+
+    bounds: function bounds(collection) {
+
+        var i, j, min, max;
+
+        for (i=0, j=collection.length; i<j; i++) {
+
+            if (!min) { min = collection[i]; }
+            if (!max) { max = collection[i]; }
+
+            if (collection[i] > max) { max = collection[i]; }
+            if (collection[i] < min) { min = collection[i]; }
+
+        }
+
+        return {
+            min: min,
+            max: max
+        }
+
     }
 
 };
@@ -269,27 +296,24 @@ JCL.Canvas.prototype = {
 
     /**
      * @description Draws a rectangle on the canvas.
-     * @param x {Number} The distance from the left edge of the canvas to draw the left edge of the rectangle.
-     * @param y {Number} The distance form the top edge of the canvas to draw the top edge of the rectangle.
-     * @param w {Number} The width, in pixels, of the rectangle.
-     * @param h {Number} The height, in pixels, of the rectangle.
+     * @param rect {Object} An instance of JCL.Rectangle.
      * @param fillStyle {String} The canvas style used to fill the rectangle.
      * @param strokeStyle {String} The canvas style used to stroke the rectangle.
      * @param lineWidth {Number} The stroke width of the rectangle.
      * @return {Object} The resulting canvas object.
      */
 
-    drawRectangle: function drawRectangle(x, y, w, h, fillStyle, strokeStyle, lineWidth) {
+    drawRectangle: function drawRectangle(rect, fillStyle, strokeStyle, lineWidth) {
 
         if (fillStyle) {
             this.ctx.fillStyle = fillStyle;
-            this.ctx.fillRect(x, y, w, h);
+            this.ctx.fillRect(Math.floor(rect.x) + 0.5, Math.floor(rect.y) + 0.5, rect.width, rect.height);
         }
 
         if (strokeStyle) {
             this.ctx.strokeStyle = strokeStyle;
             this.ctx.lineWidth = lineWidth || 1;
-            this.ctx.strokeRect(x, y, w, h);
+            this.ctx.strokeRect(Math.floor(rect.x) + 0.5, Math.floor(rect.y) + 0.5, rect.width, rect.height);
         }
 
         return this;
@@ -693,7 +717,7 @@ JCL.Rectangle.prototype = {
 
         var x, y, z, width, height, depth;
 
-        if (a && b && c && d && !e && !f) {
+        if (a !== undefined && b !== undefined && c !== undefined && d !== undefined && e === undefined && f === undefined) {
             // Assume arguments (x, y, width, height);
             x = a;
             y = b;
@@ -795,8 +819,6 @@ JCL.Chart = function Chart(area, options) {
         JCL.error("Cannot create a Chart without a Canvas or Rectangle specified as the area.")
     }
 
-    console.dir(this);
-
     return this;
 
 };
@@ -810,16 +832,80 @@ JCL.Chart.prototype = {
         if (this.xaxis.type === "column") {
             intervalWidth = this.area.width / (this.xaxis.max - this.xaxis.min + 1);
             return new JCL.Point(
-                this.area.x + ((x - this.xaxis.min) * Math.floor(intervalWidth)) + (intervalWidth/2),
-                this.area.y + this.area.height - (((y - this.yaxis.min)/(this.yaxis.max - this.yaxis.min)) * this.area.height)
+                this.area.x + Math.floor(((x - this.xaxis.min) * intervalWidth) + (intervalWidth/2)),
+                this.area.y + this.area.height - Math.floor((((y - this.yaxis.min)/(this.yaxis.max - this.yaxis.min)) * this.area.height))
             );
         }
 
         return new JCL.Point(
-            this.area.x + (((x - this.xaxis.min) / (this.xaxis.max - this.xaxis.min)) * this.area.width),
-            this.area.y + this.area.height - (((y - this.yaxis.min)/(this.yaxis.max - this.yaxis.min)) * this.area.height)
+            Math.floor(this.area.x + (((x - this.xaxis.min) / (this.xaxis.max - this.xaxis.min)) * this.area.width)),
+            Math.floor(this.area.y + this.area.height - (((y - this.yaxis.min)/(this.yaxis.max - this.yaxis.min)) * this.area.height))
         );
 
     }
+
+};/**
+ * @namespace JCL.Tooltip
+ */
+
+/**
+ * @class
+ * @param id {String} The ID of the tooltip.
+ * @return {Object}
+ */
+
+JCL.Tooltip = function Tooltip(dom, id) {
+
+    this.parent = dom || document.getElementsByTagName("body")[0];
+    if (this.parent.length > 0) { this.parent = this.parent[0]; }
+
+    this.id = id || "tooltip-" + JCL.utilities.randomInt(0,100000);
+    this.el = null;
+
+    this.initialize();
+
+    return this;
+
+};
+
+JCL.Tooltip.prototype = {
+
+    constructor: "Tooltip",
+
+    initialize: function initialize() {
+
+        var output = "";
+
+        var el = document.createElement("div");
+        el.id = this.id;
+        el.className = "tooltip";
+
+        this.el = this.parent.appendChild(el);
+
+        return this;
+
+    },
+
+    render: function render(content, alignment) {
+
+        var output = "";
+
+        // Left Arrow (if needed)
+        if (alignment === "left") { output += "<div class=\"tooltip-arrow-left\" />"; }
+
+        // Content
+        output += "<div class=\"tooltip-content\">";
+        output += content;
+        output += "</div>";
+
+        // Right Arrow (if needed)
+        if (alignment === "right") { output += "<div class=\"tooltip-arrow-right\" />"; }
+
+        this.el.innerHTML = output;
+
+        return this;
+
+    }
+
 
 };
