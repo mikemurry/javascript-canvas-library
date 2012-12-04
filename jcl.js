@@ -192,7 +192,7 @@ JCL.renderer = (function() {
     function _add(fn) {
         var len = _list.push(fn);
         _len = len;
-        if (_len == 1) { _loop(); }
+        if (_len === 1) { _loop(); }
         return len - 1;
     }
 
@@ -239,12 +239,21 @@ JCL.renderer = (function() {
 
 JCL.Canvas = function Canvas(canvasId, options) {
 
+    var that = this;
+
     options = options || {};
     this.options = options;
 
     if (typeof canvasId === "object") {
-        this.dom = canvasId[0];
+        if (canvasId.length) {
+            // Assume jQuery Object
+            this.dom = canvasId[0];
+        } else {
+            // Assume raw DOM element.
+            this.dom = canvasId;
+        }
     } else {
+        // Assume ID string
         this.dom = document.getElementById(canvasId);
     }
 
@@ -284,7 +293,30 @@ JCL.Canvas = function Canvas(canvasId, options) {
             this.height - options.margins[0] - options.margins[2]
         );
 
+        this.dom.onmousemove = function(e) {
+            if (that.rollover) { that.rollover(e); }
+        };
+
+        this.dom.onmouseout = function(e) {
+            if (that.rollout) { that.rollout(e); }
+        };
+
     } else { JCL.warn("Canvas (ID: '" + canvasId + "') cannot be enabled."); }
+
+    // Add a nicer interface for the draw functions.
+
+    this.draw = {
+        rectangle: this.drawRectangle,
+        path: this.drawPath,
+        shape: this.drawShape,
+        haystack: this.drawHaystack,
+        circle: this.drawCircle,
+        arc: this.drawArc,
+        text: this.drawText,
+        image: this.drawImage,
+        imageExt: this.drawImageExt,
+        remoteImage: this.drawRemoteImage
+    };
 
     return this;
 
@@ -474,14 +506,23 @@ JCL.Canvas.prototype = {
         return this;
     },
 
-    drawImage: function drawRemoteImage(url, x, y, width, height) {
+    drawImage: function drawImage(img, x, y, width, height) {
+        this.ctx.drawImage(img, x, y, width, height);
+        return this;
+    },
+
+    drawImageExt: function drawImageExt(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight){
+        this.ctx.drawImage(img, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight);
+        return this;
+    },
+
+    drawRemoteImage: function drawRemoteImage(url, x, y, width, height) {
         var i = new Image(), that = this;
         i.onload = function() {
-            that.ctx.drawImage(i, x, y, width, height);
+            that.drawImage(i, x, y, width, height);
         };
         i.src = url;
         return this;
-
     },
 
     /**
@@ -770,6 +811,7 @@ JCL.Rectangle.prototype = {
     center: function center(point) {
         if (point) {
             this.set(point.x - (this.width / 2), point.y-(this.height / 2), point.z-(this.depth / 2), this.width, this.height, this.depth);
+            return this;
         } else {
             return new JCL.Point(this.x + (this.width / 2), this.y + (this.height / 2), this.z + (this.depth / 2));
         }
@@ -780,7 +822,7 @@ JCL.Rectangle.prototype = {
  */
 
 /**
- * @class The Chart class makes it easier to map data points based on values instead of physical canvas coordinates.
+ * @class The PlotMap class converts virtual chart coordinates into physical screen coordinates.
  * @param area {Object} The rectangle or canvas that specifies the boundaries of the chart.
  * @param options {Object}
  * @return {Object}
@@ -845,6 +887,152 @@ JCL.Chart.prototype = {
     }
 
 };/**
+ * @namespace JCL.Plot.Bar
+ */
+
+/**
+ * @class The Plot.Bar class converts virtual chart coordinates into physical screen coordinates.
+ * @param area {Object} The rectangle or canvas that specifies the boundaries of the chart.
+ * @param options {Object}
+ * @return {Object}
+ */
+
+JCL.Plot = JCL.Plot || {};
+
+JCL.Plot.Bar = function BarPlot(area, options) {
+
+    options = options || {};
+    this.options = options;
+
+    if (area) {
+
+        // Initialize Area
+        if (area instanceof JCL.Canvas) {
+            this.area = new JCL.Rectangle(0, 0, area.width, area.height);
+        } else if (area instanceof JCL.Rectangle) {
+            this.area = area;
+        }
+
+        // Initialize X Axis
+        options.xaxis = options.xaxis || {};
+        this.xaxis = {
+            columns: options.xaxis.columns || 0
+        };
+
+        // Initialize Y Axis
+        options.yaxis = options.yaxis || {};
+        this.yaxis = {
+            min: options.yaxis.min || 0,
+            max: options.yaxis.max || 100,
+            interval: options.yaxis.interval || 10
+        };
+
+        this.remap();
+
+    } else {
+        JCL.error("Cannot create a Chart without a Canvas or Rectangle specified as the area.")
+    }
+
+    return this;
+
+};
+
+JCL.Plot.Bar.prototype = {
+
+    remap: function remap() {
+        this.xaxis.columnWidth = this.area.width / this.xaxis.columns;
+    },
+
+    plot: function plot(column, y) {
+
+        var columnWidth = this.xaxis.columnWidth;
+
+        return new JCL.Point(
+            this.area.x + Math.floor((column * columnWidth) + (columnWidth/2)),
+            this.area.y + this.area.height - Math.floor((((y - this.yaxis.min)/(this.yaxis.max - this.yaxis.min)) * this.area.height))
+        );
+
+    },
+
+    map: function map(arr) {
+        var i, max, output = [];
+        for (i=0, max=arr.length; i<max; i++) {
+            output.push(this.plot(arr[i].x, arr[i].y));
+        }
+        return output;
+    }
+
+};/**
+ * @namespace JCL.Plot.Scatter
+ */
+
+/**
+ * @class The Plot.Scatter class converts virtual chart coordinates into physical screen coordinates.
+ * @param area {Object} The rectangle or canvas that specifies the boundaries of the chart.
+ * @param options {Object}
+ * @return {Object}
+ */
+
+JCL.Plot = JCL.Plot || {};
+
+JCL.Plot.Scatter = function ScatterPlot(area, options) {
+
+    options = options || {};
+    this.options = options;
+
+    if (area) {
+
+        // Initialize Area
+        if (area instanceof JCL.Canvas) {
+            this.area = new JCL.Rectangle(0, 0, area.width, area.height);
+        } else if (area instanceof JCL.Rectangle) {
+            this.area = area;
+        }
+
+        // Initialize X Axis
+        options.xaxis = options.xaxis || {};
+        this.xaxis = {
+            min: options.xaxis.min || 0,
+            max: options.xaxis.max || 100,
+            interval: options.xaxis.interval || 10
+        };
+
+        // Initialize Y Axis
+        options.yaxis = options.yaxis || {};
+        this.yaxis = {
+            min: options.yaxis.min || 0,
+            max: options.yaxis.max || 100,
+            interval: options.yaxis.interval || 10
+        };
+
+    } else {
+        JCL.error("Cannot create a Chart without a Canvas or Rectangle specified as the area.")
+    }
+
+    return this;
+
+};
+
+JCL.Plot.Scatter.prototype = {
+
+    plot: function plot(x, y) {
+
+        var xmin = this.xaxis.min;
+        var ymin = this.yaxis.min;
+        var height = this.area.height;
+
+        return new JCL.Point(
+            Math.floor(this.area.x + (((x - xmin) / (this.xaxis.max - xmin)) * this.area.width)),
+            Math.floor(this.area.y + height - (((y - ymin)/(this.yaxis.max - ymin)) * height))
+        );
+
+    },
+
+    movement: function (e) {
+        console.log(e);
+    }
+
+};/**
  * @namespace JCL.Tooltip
  */
 
@@ -891,7 +1079,7 @@ JCL.Tooltip.prototype = {
         var output = "";
 
         // Left Arrow (if needed)
-        if (alignment === "left") { output += "<div class=\"tooltip-arrow-left\" />"; }
+        if (alignment === "left") { output += "<div class=\"tooltip-arrow-left\"></div>"; }
 
         // Content
         output += "<div class=\"tooltip-content\">";
@@ -899,7 +1087,7 @@ JCL.Tooltip.prototype = {
         output += "</div>";
 
         // Right Arrow (if needed)
-        if (alignment === "right") { output += "<div class=\"tooltip-arrow-right\" />"; }
+        if (alignment === "right") { output += "<div class=\"tooltip-arrow-right\"></div>"; }
 
         this.el.innerHTML = output;
 
