@@ -2,7 +2,8 @@
 
 <project name="JCLBuild" default="dist">
 
-    <property name="includes" value="jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.Canvas.js, jcl.performance.js, jcl.Point.js, jcl.Rectangle.js, jcl.Chart.js, jcl.Plot.Bar.js, jcl.Plot.Scatter.js, jcl.Tooltip.js" />
+    <property name="includes" value="jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.Canvas.js, jcl.performance.js, jcl.Point.js, jcl.Rectangle.js" />
+    <property name="includes-amd" value="../wrapper/amd-start.js, jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.Canvas.js, jcl.performance.js, jcl.Point.js, jcl.Rectangle.js, ../wrapper/amd-end.js" />
 
     <target name="prepare">
         <delete dir="temp" />
@@ -24,14 +25,27 @@
     </target>
 
     <target name="build" depends="minify">
+
         <delete file="jcl.js" />
         <append destFile="jcl.js">
             <filelist dir="lib" files="${includes}" />
         </append>
+
         <delete file="jcl.min.js" />
         <append destFile="jcl.min.js">
             <filelist dir="temp" files="${includes}" />
         </append>
+
+        <delete file="jcl-amd.js" />
+        <append destFile="jcl-amd.js">
+            <filelist dir="lib" files="${includes-amd}" />
+        </append>
+
+        <delete file="jcl-amd.min.js" />
+        <append destFile="jcl-amd.min.js">
+            <filelist dir="temp" files="${includes-amd}" />
+        </append>
+
     </target>
 
     <target name="document" depends="build">

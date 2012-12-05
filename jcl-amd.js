@@ -1,4 +1,4 @@
-
+define(function() {
 
 /**
  * @namespace JCL
@@ -819,4 +819,4 @@ JCL.Rectangle.prototype = {
         }
     }
 
-};
+}; return JCL; });
