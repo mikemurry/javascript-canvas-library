@@ -49,7 +49,7 @@
     </target>
 
     <target name="document" depends="build">
-        <exec command="java -jar C:\phing\tools\jsdoc-toolkit\jsrun.jar C:\phing\tools\jsdoc-toolkit\app\run.js jcl.js -p -t=C:\phing\tools\jsdoc-toolkit\templates\jsdoc -d=doc" />
+        <exec command="C:\phing\tools\jsdoc3\jsdoc jcl.js --destination docs" />
     </target>
 
     <target name="dist" depends="document">

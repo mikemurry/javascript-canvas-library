@@ -4,7 +4,7 @@ JCL - JavaScript Canvas Library
 Overview
 --------
 
-The JavaScript Canvas Library is a JavaScript helper library to assist with canvas visualizations. Major components include:
+The JavaScript Canvas Library is a JavaScript helper library and an object-oriented approach to canvas visualizations. The library includes:
 
 **Classes**
 - Canvas Class *(jcl.Canvas)*
