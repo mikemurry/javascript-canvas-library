@@ -6,6 +6,8 @@
 
 var JCL = JCL || {
 
+    VERSION: '0.2',
+
     /**
      * @description Throws a console log.
      * @param msg {String} The message to write to the console.
@@ -283,6 +285,9 @@ JCL.performance = (function() {
     }
 
 }());
+/**
+ * @namespace JCL.Canvas
+ */
 
 
 /**
@@ -496,28 +501,23 @@ JCL.Canvas.prototype = {
     },
 
     /**
-     * @description Draws an arc of a circle.
-     * @param center {Object} A point object representing the center of the circle.
-     * @param radius {Number} The radius of the circle.
-     * @param start {Number} The starting angle in degrees.
-     * @param end {Number} The ending angle in degrees.
-     * @param fillStyle {String} The color to fill the path.
-     * @param strokeStyle {String} The canvas style used to stroke the path.
-     * @param lineWidth {Number} The width of the path.
-     * @return {Object} The resulting canvas object.
+     * @description Draws an arc.
+     * @param arc {JCL.Arc} An instance of a JCL.Arc.
+     * @return {Object}
      */
 
-    drawArc: function(center, radius, start, end, fillStyle, strokeStyle, lineWidth){
+
+    drawArc: function(arc){
         var degrees = JCL.utilities.radians;
         this.ctx.beginPath();
-        this.ctx.arc(center.x, center.y, radius, degrees(start - 90), degrees(end - 90), false);
-        if (fillStyle) {
-            this.ctx.fillStyle = fillStyle;
+        this.ctx.arc(arc.center.x, arc.center.y, arc.radius, degrees(arc.start - 90), degrees(arc.end - 90), false);
+        if (arc.fillStyle) {
+            this.ctx.fillStyle = arc.fillStyle;
             this.ctx.fill();
         }
-        if (strokeStyle) {
-            this.ctx.strokeStyle = strokeStyle;
-            this.ctx.lineWidth = lineWidth || 1;
+        if (arc.strokeStyle) {
+            this.ctx.strokeStyle = arc.strokeStyle;
+            this.ctx.lineWidth = arc.lineWidth || 1;
             this.ctx.stroke();
         }
         return this;
@@ -747,7 +747,6 @@ JCL.Point.prototype = {
  * @property {string} fillStyle The color to fill the circle.
  * @property {string} strokeStyle The color to stroke the border of the circle.
  * @property {number} lineWidth The thickness of the circle's border.
- * @property {JCL.Point} pivot The pivot point of the rectangle.
  *
  * @return {Object}
  */
@@ -761,7 +760,7 @@ JCL.Rectangle = function(options) {
     this.fillStyle = options.fill || null;
     this.strokeStyle = options.stroke || null;
     this.lineWidth = options.thickness || 0;
-    this.pivot = new JCL.Point(0,0);
+    //this.pivot = new JCL.Point(0,0);
 };
 
 JCL.Rectangle.prototype = {
@@ -879,6 +878,61 @@ JCL.Circle.prototype = {
     }
 
 };/**
+ * @namespace JCL.Arc
+ */
+
+
+/**
+ * @class
+ * @classdesc The arc class stores position and style properties for drawing arcs.
+ *
+ * @param {object} [options]
+ * @param {number} [options.x=0] The x coordinate of the circle's center.
+ * @param {number} [options.y=0] The y coordinate of the circle's center.
+ * @param {JCL.Point} [options.center] The JCL.Point instance indicating the circle's center.
+ * @param {number} [options.radius=0] The radius of the circle, in pixels.
+ * @param {string} [options.fill=null] The color to fill the circle.
+ * @param {string} [options.stroke=null] The color to stroke the border of the circle.
+ * @param {number} [options.thickness=0] The thickness of the circle's border.
+ * @param {number} [options.start=0] The starting angle of the arc in degrees.
+ * @param {number} [options.end=360] The ending angle of the arc in degrees.
+ *
+ * @return {Object}
+ */
+
+JCL.Arc = function(options) {
+
+    if (!options.center) {
+        this.center = new JCL.Point(options.x || 0, options.y || 0);
+    } else {
+        if (options.center instanceof JCL.Point) { this.center = options.center; }
+        else { this.center = new JCL.Point(options.center.x || 0, options.center.y || 0); }
+    }
+
+    this.radius = options.radius || 0;
+    this.fillStyle = options.fill || null;
+    this.strokeStyle = options.stroke || null;
+    this.lineWidth = options.thickness || 0;
+    this.start = options.start || 0;
+    this.end = options.end || 360;
+
+};
+
+JCL.Arc.prototype = {
+
+    /**
+     * @description Draws the circle on the specified canvas.
+     * @param {JCL.Canvas} canvas An instance of JCL.Canvas.
+     * @return {Object}
+     */
+
+    render: function(canvas) {
+        if (canvas instanceof JCL.Canvas) { canvas.drawArc(this); }
+        else { JCL.error("Circle.render() context must be a JCL.Canvas."); }
+        return this;
+    }
+
+};/**
  * @namespace JCL.Color
  */
 
@@ -906,9 +960,9 @@ JCL.Color = function(options) {
 
 JCL.Color.prototype = {
 
-    lerp: function(b, ratio) {
-        return this;
-    },
+    //lerp: function(b, ratio) {
+        //return this;
+    //},
 
     toHSL: function(r, g, b) {
 

@@ -2,8 +2,8 @@
 
 <project name="JCLBuild" default="dist">
 
-    <property name="includes" value="jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.performance.js, jcl.Canvas.js, jcl.Point.js, jcl.Rectangle.js, jcl.Circle.js, jcl.Color.js" />
-    <property name="includes-amd" value="../wrapper/amd-start.js, jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.performance.js, jcl.Canvas.js, jcl.Point.js, jcl.Rectangle.js, jcl.Circle.js, jcl.Color.js, ../wrapper/amd-end.js" />
+    <property name="includes" value="jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.performance.js, jcl.Canvas.js, jcl.Point.js, jcl.Rectangle.js, jcl.Circle.js, jcl.Arc.js, jcl.Color.js" />
+    <property name="includes-amd" value="../wrapper/amd-start.js, jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.performance.js, jcl.Canvas.js, jcl.Point.js, jcl.Rectangle.js, jcl.Circle.js, jcl.Arc.js, jcl.Color.js, ../wrapper/amd-end.js" />
 
     <target name="prepare">
         <delete dir="temp" />
