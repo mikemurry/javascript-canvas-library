@@ -379,7 +379,7 @@ JCL.Canvas.prototype = {
 
     drawRectangle: function(rect) {
 
-        if (rect.constructor === JCL.Rectangle) {
+        if (rect instanceof JCL.Rectangle) {
 
             if (rect.fillStyle) {
                 this.ctx.fillStyle = rect.fillStyle;
@@ -486,6 +486,7 @@ JCL.Canvas.prototype = {
      */
 
     drawCircle: function(circle){
+
         this.ctx.beginPath();
         this.ctx.arc(circle.center.x, circle.center.y, circle.radius, 0, Math.PI * 2, false);
         if (circle.fillStyle) {
@@ -498,6 +499,38 @@ JCL.Canvas.prototype = {
             this.ctx.stroke();
         }
         return this;
+    },
+
+    drawCircles: function(circles) {
+
+        var i, max, circle, sample;
+
+        if (circles.length > 0) {
+
+            sample = circles[0];
+
+            this.ctx.beginPath();
+
+            max = circles.length;
+            for (i=0; i<max; i++) {
+                circle = circles[i];
+                this.ctx.moveTo(circle.center.x, circle.center.y);
+                this.ctx.arc(circle.center.x, circle.center.y, circle.radius, 0, Math.PI * 2, false);
+            }
+            if (sample.fillStyle) {
+                this.ctx.fillStyle = sample.fillStyle;
+                this.ctx.fill();
+            }
+            if (sample.strokeStyle) {
+                this.ctx.strokeStyle = sample.strokeStyle;
+                this.ctx.lineWidth = sample.lineWidth || 1;
+                this.ctx.stroke();
+            }
+
+        }
+
+        return this;
+
     },
 
     /**
@@ -621,6 +654,13 @@ JCL.Canvas.prototype = {
  */
 
 JCL.Point = function Point(x, y, z) {
+
+    if (x && !y && !z) {
+        z = x.z || 0;
+        y = x.y || 0;
+        x = x.x || 0;
+    }
+
     return this.set(x,y,z);
 };
 

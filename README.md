@@ -90,3 +90,10 @@ A library of useful functions.
 JCL.utilities.radians(135);
 JCL.utilities.randomInt(0,100);
 ```
+
+Change Log
+----------
+
+v1.1
+- Can pass an object with x,y,z properties into the JCL.Point constructor as the only argument.
+- Added JCL.drawCircles() to draw an array of circles, using the first element as the style template.
