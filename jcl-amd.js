@@ -1,86 +1,11 @@
 define(function() {
-
 /**
  * @namespace JCL
  */
 
 var JCL = JCL || {
 
-    VERSION: '0.2',
-
-    /**
-     * @description Throws a console log.
-     * @param msg {String} The message to write to the console.
-     */
-
-    log: function(msg) {
-        if (console) { console.log(msg); }
-    },
-
-    /**
-     * @description Throws a console info.
-     * @param msg {String} The message to write to the console.
-     */
-
-    info: function(msg) {
-        if (console) { console.info(msg); }
-    },
-
-    /**
-     * @description Throws a console warning.
-     * @param msg {String} The message to write to the console.
-     */
-
-    warn: function(msg) {
-        if (console) { console.warn(msg); }
-    },
-
-    /**
-     * @description Throws a console error.
-     * @param msg {String} The message to write to the console.
-     */
-
-    error: function(msg) {
-        if (console) { console.error(msg); }
-    }
-
-
-
-};
-
-/**
- * @description Safely augments the JCL namespace to include the specified path.
- * @param ns {String} A dot separated namespace. Prefixing with "JCL." is optional.
- * @return {Object} Returns the JCL object.
- */
-
-JCL.namespace = function(ns) {
-
-    var parts, parent, i, count;
-
-    parent = JCL;
-    parts = ns.split(".");
-
-    // Skip Redundant Top Level
-    if (parts[0] === "JCL") {
-        parts = parts.slice(1);
-    }
-
-    count = parts.length;
-
-    for (i=0; i < count; i++) {
-
-        // Create a property if it doesn't exist.
-        if (typeof parent[parts[i]] === "undefined") {
-            parent[parts[i]] = {};
-        }
-
-        // Set parent to new property.
-        parent = parent[parts[i]];
-
-    }
-
-    return parent;
+    VERSION: '1.0.0'
 
 };/**
  * @namespace JCL.utilities
@@ -98,8 +23,7 @@ JCL.utilities = {
     randomInt: function(min, max) {
         if (min !== undefined && max !== undefined) {
             return Math.floor((max - min) * Math.random()) + min;
-        } else { JCL.warn("utilities.randomInt() Error: Missing min or max argument."); }
-        return false;
+        } else { throw new Error("utilities.randomInt() Error: Missing min or max argument."); }
     },
 
     /**
@@ -120,21 +44,6 @@ JCL.utilities = {
 
     degrees: function(radians) {
         return radians * (180 / Math.PI);
-    },
-
-    /**
-     * @description Converts a string into a DOM fragment.
-     * @param id {String} The ID of the resulting DOM fragment.
-     * @param htmlStr {String} The HTML string to convert.
-     * @return {Object} The resulting DOM fragment.
-     */
-
-    createFragment: function(id, htmlStr) {
-        var frag = document.createDocumentFragment(), temp = document.createElement("div");
-        temp.id = id;
-        temp.innerHTML = htmlStr;
-        while (temp.firstChild) { frag.appendChild(temp.firstChild); }
-        return frag;
     },
 
     /**
@@ -171,7 +80,7 @@ JCL.utilities = {
 
 JCL.renderer = (function() {
 
-    var _list, _len;
+    var _list, _len, _enabled;
 
     // requestAnimationFrame Shim
     window.requestAnimFrame = (function requestAnimFrame() {
@@ -187,6 +96,7 @@ JCL.renderer = (function() {
 
     _list = [];
     _len = 0;
+    _enabled = false;
 
     function _loop() {
         if (_len > 0) {
@@ -196,15 +106,16 @@ JCL.renderer = (function() {
     }
 
     function _add(fn) {
-        var len = _list.push(fn);
-        _len = len;
-        if (_len === 1) { _loop(); }
-        return len - 1;
+        var isFirst = _list.length === 0;
+        _len = _list.push(fn);
+        if (isFirst) { _loop(); }
+        return _len - 1;
     }
 
     function _remove(index) {
         _list.splice(index, 1);
         _len = _list.length;
+        if (_len <= 0) { _enabled = false; }
         return true;
     }
 
@@ -228,7 +139,7 @@ JCL.renderer = (function() {
 
         remove: _remove,
 
-        debug: _list
+        debug: function() { return _list; }
     }
 
 }());
@@ -245,12 +156,22 @@ JCL.performance = (function() {
     _delta = 0;
     _elapsed = 0;
     _fps = 0;
+    _index = null;
 
     function _init() {
         if (!_isInit) {
-            JCL.renderer.add(_update);
+            _index = JCL.renderer.add(_update);
             _isInit = true;
         }
+        return this;
+    }
+
+    function _uninit() {
+        if (_isInit) {
+            JCL.renderer.remove(_index);
+            _isInit = false;
+        }
+        return this;
     }
 
     function _update() {
@@ -261,9 +182,21 @@ JCL.performance = (function() {
         _fps = Math.floor(1/_delta);
     }
 
-    _init();
-
     return {
+
+        enable: function() {
+            _init();
+            return this;
+        },
+
+        disable: function() {
+            _uninit();
+            _delta = null;
+            _elapsed = null;
+            _last = null;
+            _fps = null;
+            return this;
+        },
 
         /**
          * @property {Number} delta The number of seconds elapsed since the last rendered frame.
@@ -298,7 +231,6 @@ JCL.performance = (function() {
  * @param {object} [options]
  * @param {number} [options.width] Overrides the element's width.
  * @param {number} [options.height] Overrides the element's height.
- * @param {boolean} [options.fullscreen] Sets the canvas to match the size of the window element.
  * @param {number} [options.zindex] Overrides the z-index of the canvas element.
  *
  * @property {boolean} enabled Represents if the canvas object is valid or not.
@@ -326,9 +258,10 @@ JCL.Canvas = function(canvasId, options) {
         this.dom = document.getElementById(canvasId);
     }
 
-    if (!this.dom) {
-        JCL.error("Invalid Canvas DOM passed into the constructor.");
-    } else {
+    if (this.dom) {
+
+        // TODO: Check for CANVAS tag name.
+
         this.ctx = this.dom.getContext("2d");
         this.enabled = (this.ctx !== undefined);
     }
@@ -338,12 +271,6 @@ JCL.Canvas = function(canvasId, options) {
         // Handle Manual Height/Width Options
         if (options.width) { this.dom.width = options.width; }
         if (options.height) { this.dom.height = options.height; }
-
-        // Handle Full Screen Option
-        if (options.fullscreen) {
-            this.dom.width = window.innerWidth;
-            this.dom.height = window.innerHeight;
-        }
 
         // Handle Z-Index Option
         if (options.zindex) {
@@ -361,7 +288,9 @@ JCL.Canvas = function(canvasId, options) {
             if (that.rollout) { that.rollout(e); }
         };
 
-    } else { JCL.warn("Canvas (ID: '" + canvasId + "') cannot be enabled."); }
+    } else {
+        throw new ReferenceError("Could not instantiate JCL.Canvas with specified DOM element.");
+    }
 
     return this;
 
@@ -393,7 +322,7 @@ JCL.Canvas.prototype = {
             }
 
         } else {
-            JCL.warn("Cannot draw a rectangle without a JCL.Rectangle instance.");
+            throw new TypeError("Cannot draw a rectangle without a JCL.Rectangle instance.");
         }
 
         return this;
@@ -666,8 +595,6 @@ JCL.Point = function Point(x, y, z) {
 
 JCL.Point.prototype = {
 
-    constructor: "Point",
-
     /**
      * @description Calculates the angle between two points.
      * @param x {Number} The x coordinate.
@@ -677,9 +604,9 @@ JCL.Point.prototype = {
      */
 
     set: function(x,y,z) {
-        this.x = x || 0;
-        this.y = y || 0;
-        this.z = z || 0;
+        this.x = x || this.x || 0;
+        this.y = y || this.y || 0;
+        this.z = z || this.z || 0;
         return this;
     },
 
@@ -688,17 +615,8 @@ JCL.Point.prototype = {
      * @return {Object}
      */
 
-    get: function() {
+    toJSON: function() {
         return { x: this.x, y: this.y, z: this.z };
-    },
-
-    /**
-     * @description Prints the current coordinates as a string.
-     * @return {String}
-     */
-
-    toString: function() {
-        return "Point( x:" + this.x + ", y:" + this.y + ", z:" + this.z + ")";
     },
 
     /**
@@ -708,9 +626,12 @@ JCL.Point.prototype = {
      */
 
     distance: function(a) {
-        if (a.constructor === "Point") { return Math.sqrt(Math.pow(a.x- this.x, 2) + Math.pow(a.y- this.y,2)); }
-        else { JCL.warn("Cannot calculate distance of a non-point."); }
-        return undefined;
+
+        // TODO: Make work in 3d space.
+
+        if (a instanceof JCL.Point) { return Math.sqrt(Math.pow(a.x- this.x, 2) + Math.pow(a.y- this.y,2)); }
+        else { throw new TypeError("Cannot calculate distance of a non-point."); }
+
     },
 
     /**
@@ -720,9 +641,8 @@ JCL.Point.prototype = {
      */
 
     angle: function(a) {
-        if (a.constructor === "Point") { return Math.atan2(a.y- this.y, a.x - this.x); }
-        else { JCL.warn("Cannot calculate angle of a non-point."); }
-        return undefined;
+        if (a instanceof JCL.Point) { return Math.atan2(a.y- this.y, a.x - this.x); }
+        else { throw new TypeError("Cannot calculate angle of a non-point."); }
     },
 
     /**
@@ -738,8 +658,9 @@ JCL.Point.prototype = {
 
         if (angle !== null && distance !== null) {
             return new JCL.Point((distance * Math.cos(radians(angle))) + this.x, (distance * Math.sin(radians(angle))) + this.y);
-        } else { JCL.warn("Could not calculate tangent. Missing required data. (Angle: " + angle + ", Distance: " + distance + ")"); }
-        return undefined;
+        } else {
+            throw new Error("Could not calculate tangent. Missing required data. (Angle: " + angle + ", Distance: " + distance + ")");
+        }
 
     },
 
@@ -754,16 +675,18 @@ JCL.Point.prototype = {
         if (!ratio || ratio < 0) { ratio = 0; }
         else if (ratio > 1) { ratio = 1; }
         if (this && a && ratio !== null) {
-            if (a.constructor === "Point") {
+            if (a instanceof JCL.Point) {
                 return { x: this.x + ((a.x - this.x) * ratio), y: this.y + ((a.y - this.y) * ratio) };
-            } else { JCL.warn("Could not interpolate point. Invalid point."); }
-        } else { JCL.warn("Could not interpolate point. Missing required data."); }
-        return undefined;
+            } else {
+                throw new Error("Could not interpolate point. Invalid point.");
+            }
+        } else {
+            throw new Error("Could not interpolate point. Missing required data.");
+        }
     },
 
     translate: function(x, y, z) {
-        var current = this.get();
-        return this.set(current.x + (x || 0), current.y + (y || 0), current.z + (z || 0));
+        return this.set(this.x + (x || 0), this.y + (y || 0), this.z + (z || 0));
     }
 
 };
@@ -793,6 +716,9 @@ JCL.Point.prototype = {
 
 
 JCL.Rectangle = function(options) {
+
+    options = options || {};
+
     this.x = options.x || 0;
     this.y = options.y || 0;
     this.width = options.width || 0;
@@ -801,26 +727,27 @@ JCL.Rectangle = function(options) {
     this.strokeStyle = options.stroke || null;
     this.lineWidth = options.thickness || 0;
     //this.pivot = new JCL.Point(0,0);
+    return this;
 };
 
 JCL.Rectangle.prototype = {
+
+    set: function (x, y, width, height) {
+        this.x = x || this.width || 0;
+        this.y = y || this.y || 0;
+        this.width = width || this.width || 0;
+        this.height = height || this.height || 0;
+        return this;
+    },
+
 
     /**
      * @description Returns a simplified object representing the point's coordinates.
      * @return {Object}
      */
 
-    get: function() {
-        return { x: this.center.x, y: this.center.y, center: this.center, width: this.width, height: this.height, fillStyle: this.fillStyle, strokeStyle: this.strokeStyle, lineWidth: this.lineWidth };
-    },
-
-    /**
-     * @description Prints the current coordinates as a string.
-     * @return {String}
-     */
-
-    toString: function() {
-        return "Rectangle( x:" + this.center.x + ", y:" + this.center.y + ", center: " + this.center.toString() + ", width:" + this.width + ", height:" + this.height + ", fillStyle:" + this.fillStyle + ", strokeStyle:" + this.strokeStyle + ", lineWidth:" + this.lineWidth + ")";
+    toJSON: function() {
+        return { x: this.x, y: this.y, width: this.width, height: this.height, fillStyle: this.fillStyle, strokeStyle: this.strokeStyle, lineWidth: this.lineWidth };
     },
 
     /**
@@ -889,6 +816,8 @@ JCL.Rectangle.prototype = {
 
 JCL.Circle = function(options) {
 
+    options = options || {};
+
     if (!options.center) {
         this.center = new JCL.Point(options.x || 0, options.y || 0);
     } else {
@@ -900,6 +829,8 @@ JCL.Circle = function(options) {
     this.fillStyle = options.fill || null;
     this.strokeStyle = options.stroke || null;
     this.lineWidth = options.thickness || 0;
+
+    return this;
 
 };
 
@@ -913,7 +844,7 @@ JCL.Circle.prototype = {
 
     render: function(canvas) {
         if (canvas instanceof JCL.Canvas) { canvas.drawCircle(this); }
-        else { JCL.error("Circle.render() context must be a JCL.Canvas."); }
+        else { throw new TypeError("JCL.Circle.render() must be passed a JCL.Canvas."); }
         return this;
     }
 
@@ -942,6 +873,9 @@ JCL.Circle.prototype = {
 
 JCL.Arc = function(options) {
 
+    // Ensure options object exists.
+    options = options || {};
+
     if (!options.center) {
         this.center = new JCL.Point(options.x || 0, options.y || 0);
     } else {
@@ -968,7 +902,7 @@ JCL.Arc.prototype = {
 
     render: function(canvas) {
         if (canvas instanceof JCL.Canvas) { canvas.drawArc(this); }
-        else { JCL.error("Circle.render() context must be a JCL.Canvas."); }
+        else { throw new TypeError('JCL.Arc.render() must be passed a JCL.Canvas.'); }
         return this;
     }
 
