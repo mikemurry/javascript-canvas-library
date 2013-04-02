@@ -189,7 +189,7 @@ JCL.utilities.randomInt(0,100);
 Change Log
 ----------
 
-**v1.0.0** (Coming Soon)
+**v1.0.0** (April 2, 2013)
 - Can pass an object with x,y,z properties into the JCL.Point constructor as the only argument.
 - Added JCL.drawCircles() to draw an array of circles, using the first element as the style template.
 - Removed the 'fullscreen' option from JCL.Canvas options.
@@ -211,3 +211,6 @@ Roadmap
 
 **v1.2**
 - Color object JCL.Color to easily convert and manipulate hex, string, rgb, and hsl.
+
+**v2.0**
+- Replicate Canvas Library to SVG.
