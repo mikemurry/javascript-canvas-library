@@ -5,7 +5,7 @@
 
 var JCL = JCL || {
 
-    VERSION: '1.0.0'
+    VERSION: '1.2.0'
 
 };/**
  * @namespace JCL.utilities
@@ -258,7 +258,7 @@ JCL.Canvas = function(canvasId, options) {
         this.dom = document.getElementById(canvasId);
     }
 
-    if (this.dom) {
+    if (this.dom && this.dom.getContext) {
 
         // TODO: Check for CANVAS tag name.
 
@@ -485,6 +485,36 @@ JCL.Canvas.prototype = {
         return this;
     },
 
+    drawOval: function(oval) {
+
+        var kappa, cx, cy;
+
+        kappa = .5522848;
+        cx = (oval.width / 2) * kappa;
+        cy = (oval.height / 2) * kappa;
+
+        this.ctx.beginPath();
+        this.ctx.moveTo(oval.start.x, oval.mid.y);
+        this.ctx.bezierCurveTo(oval.start.x, oval.mid.y - cy, oval.mid.x - cx, oval.start.y, oval.mid.x, oval.start.y);
+        this.ctx.bezierCurveTo(oval.mid.x + cx, oval.start.y, oval.end.x, oval.mid.y - cy, oval.end.x, oval.mid.y);
+        this.ctx.bezierCurveTo(oval.end.x, oval.mid.y + cy, oval.mid.x + cx, oval.end.y, oval.mid.x, oval.end.y);
+        this.ctx.bezierCurveTo(oval.mid.x - cx, oval.end.y, oval.start.x, oval.mid.y + cy, oval.start.x, oval.mid.y);
+        this.ctx.closePath();
+
+        if (oval.fillStyle) {
+            this.ctx.fillStyle = oval.fillStyle;
+            this.ctx.fill();
+        }
+        if (oval.strokeStyle) {
+            this.ctx.strokeStyle = oval.strokeStyle;
+            this.ctx.lineWidth = oval.lineWidth || 1;
+            this.ctx.stroke();
+        }
+
+        return this;
+
+    },
+
     /**
      * @description Draws text.
      * @param str {String} The string of text to display.
@@ -582,9 +612,9 @@ JCL.Canvas.prototype = {
  * @return {Object}
  */
 
-JCL.Point = function Point(x, y, z) {
+JCL.Point = function (x, y, z) {
 
-    if (x && !y && !z) {
+    if (arguments.length === 1) {
         z = x.z || 0;
         y = x.y || 0;
         x = x.x || 0;
@@ -685,10 +715,100 @@ JCL.Point.prototype = {
         }
     },
 
-    translate: function(x, y, z) {
+    /**
+     * round()
+     * Rounds the coordinates to the nearest pixel.
+     */
+
+    round: function() {
+        this.x = Math.round(this.x);
+        this.y = Math.round(this.y);
+        this.z = Math.round(this.z);
+        return this;
+    },
+
+    /**
+     * crisp()
+     * Overcomes the subpixel blurring on single pixel width lines.
+     */
+
+    crisp: function() {
+        this.round();
+        this.translate(-.5, -.5);
+        return this;
+    },
+
+    translate: function(x, y, z, copy) {
+
+        // Z is optional, so if only 3 arguments and the last is boolean, assume 'z' is actually 'copy'.
+
+        if (arguments.length === 3 && typeof arguments[2] === 'boolean') {
+            copy = arguments[2];
+            z = 0;
+        }
+
+        if (copy) {
+            return new JCL.Point(this.x + (x || 0), this.y + (y || 0), this.z + (z || 0));
+        }
+
         return this.set(this.x + (x || 0), this.y + (y || 0), this.z + (z || 0));
     }
 
+};JCL.VectorPoint = function (x, y, z) {
+
+    if (arguments.length === 1) {
+        z = x.z || 0;
+        y = x.y || 0;
+        x = x.x || 0;
+    }
+
+    return this.set(x,y,z);
+
+};
+
+JCL.VectorPoint.prototype = JCL.Point.prototype;
+
+JCL.VectorPoint.prototype.add = function(V) {
+    this.x += V.x;
+    this.y += V.y;
+    this.z += V.z;
+    return this;
+};
+
+JCL.VectorPoint.prototype.subtract = function(V) {
+    this.x -= V.x;
+    this.y -= V.y;
+    this.z -= V.z;
+    return this;
+};
+
+JCL.VectorPoint.prototype.scale = function(V) {
+
+    if (typeof V === 'number') {
+        var num = V;
+        V = {
+            x: num,
+            y: num,
+            z: num
+        }
+    }
+
+    this.x *= V.x;
+    this.y *= V.y;
+    this.z *= V.z;
+
+    return this;
+
+};
+
+JCL.VectorPoint.prototype.length = function() {
+    return Math.sqrt((this.x * this.x) + (this.y * this.y) + (this.z * this.z));
+};
+
+JCL.VectorPoint.prototype.normalize = function() {
+    var inverse = 1 / this.length();
+    this.scale(inverse);
+    return this;
 };
 /**
  * @class
@@ -906,115 +1026,122 @@ JCL.Arc.prototype = {
         return this;
     }
 
-};/**
- * @namespace JCL.Color
+};
+/**
+ * @class
+ * @classdesc The rectangle class stores position and style properties for drawing rectangles.
+ *
+ * @param {object} [options]
+ * @param {number} [options.x=0] The position of the oval's left edge.
+ * @param {number} [options.y=0] The position of the oval's top edge.
+ * @param {number} [options.width=0] The width of the oval.
+ * @param {number} [options.height=0] The height of the oval.
+ * @param {number} [options.depth=0] The depth of the oval.
+ * @param {string} [options.fill=null] The color to fill the oval.
+ * @param {string} [options.stroke=null] The color to stroke the border of the oval.
+ * @param {number} [options.thickness=0] The thickness of the oval's border.
+ *
+ * @property {number} x The position of the oval's left edge.
+ * @property {number} y The position of the oval's top edge.
+ * @property {number} width The width of the oval.
+ * @property {number} height The height of the oval.
+ * @property {string} fillStyle The color to fill the oval.
+ * @property {string} strokeStyle The color to stroke the border of the oval.
+ * @property {number} lineWidth The thickness of the oval's border.
+ *
+ * @return {Object}
  */
 
-JCL.Color = function(options) {
 
-    if (options.hasOwnProperty('h')) {
-        // Assume HSL
-        this.h = options.h || 0;
-        this.s = options.s || 0;
-        this.l = options.l || 0;
-        this.toRGB(this.hsl());
-    } else if (options.hasOwnProperty('r')) {
-        // Assume RGB
-        this.r = options.r || 0;
-        this.g = options.g || 0;
-        this.b = options.b || 0;
-        this.toHSL(this.rgb());
-    }
+JCL.Oval = function(options) {
 
-    this.a = options.a || 1;
+    options = options || {};
+
+    this.x = options.x || 0;
+    this.y = options.y || 0;
+    this.z = options.z || 0;
+    this.width = options.width || 0;
+    this.height = options.height || 0;
+    this.depth = options.depth || 0;
+    this.fillStyle = options.fill || null;
+    this.strokeStyle = options.stroke || null;
+    this.lineWidth = options.thickness || 0;
+
+    this.calculate();
 
     return this;
+};
+
+JCL.Oval.prototype = {
+
+    /**
+     * Calculates the start, mid, and end points required to calculate the bezier curves.
+     * @returns {*}
+     */
+
+    calculate: function () {
+        this.start = new JCL.Point(this.x, this.y);
+        this.end = new JCL.Point(this.x + this.width, this.y + this.height);
+        this.mid = new JCL.Point((this.x + this.width) / 2, (this.y + this.height) / 2);
+        return this;
+    },
+
+    /**
+     * center()
+     * Calculates the center point of the oval, or if a point is passed in, adjusts the oval's location to match the provided center point.
+     * @param {JCL.Point} point The JCL.Point to recenter the object to.
+     * @return {Object} The resulting point.
+     */
+
+    center: function(point) {
+        if (point) {
+            this.x = point.x - (this.width / 2);
+            this.y = point.y - (this.height / 2);
+            this.z = point.z - (this.depth / 2);
+            this.calculate();
+            return this;
+        } else {
+            return new JCL.Point(this.x + (this.width / 2), this.y + (this.height / 2), this.z + (this.depth / 2));
+        }
+    },
+
+    /**
+     * render()
+     * Draws the rectangle to the screen using the passed canvas.
+     * @param {JCL.Canvas} canvas The JCL.Canvas instance to render to.
+     * @return {*}
+     */
+
+    render: function(canvas){
+        if (canvas instanceof JCL.Canvas) { canvas.drawOval(this); }
+        else { JCL.error("Specified canvas is not an instance of JCL.Canvas."); }
+        return this;
+    }
+
+};JCL.Particle = function(options) {
+
+    options = options || {};
+
+    this.mass = options.mass || 1;
+
+    this.position = options.position || new JCL.Point(0,0);
+    this.velocity = new JCL.Point(0,0);
+    this.force = new JCL.VectorPoint(0,0);
 
 };
 
-JCL.Color.prototype = {
+JCL.Particle.prototype = {
 
-    //lerp: function(b, ratio) {
-        //return this;
-    //},
+    update: function(delta) {
 
-    toHSL: function(r, g, b) {
+        this.velocity.x += this.force.x * delta;
+        this.velocity.y += this.force.y * delta;
+        this.velocity.z += this.force.z * delta;
 
-        var r1 = r / 255;
-        var g1 = r / 255;
-        var b1 = b / 255;
+        this.position.x += this.velocity.x * delta;
+        this.position.y += this.velocity.y * delta;
+        this.position.z += this.velocity.z * delta;
 
-        var maxColor = Math.max(r1, g1, b1);
-        var minColor = Math.min(r1, g1, b1);
-
-        var L = (maxColor + minColor) / 2;
-        var S = 0;
-        var H = 0;
-
-        if (maxColor != minColor) {
-
-            // Calculate S
-            if (L < 0.5) {
-                S = (maxColor - minColor) / (maxColor + minColor);
-            } else {
-                S = (maxColor - minColor) / (2.0 - maxColor - minColor);
-            }
-
-            // Calculate H
-            if (r1 === maxColor) {
-                H = (g1-b1) / (maxColor - minColor);
-            } else if (g1 === maxColor) {
-                H = 2.0 + (b1-r1) / (maxColor - minColor);
-            } else {
-                H = 4.0 + (r1 - g1) / (maxColor - minColor);
-            }
-        }
-
-        L = L * 100;
-        S = S * 100;
-        H = H * 60;
-
-        if (H<0) { H += 360; }
-
-        this.h = H;
-        this.s = S;
-        this.l = L;
-
-        return this.hsl();
-
-    },
-
-    toRGB: function(h,s,l) {
-
-        h = (h % 360) / 360;
-
-        var m2 = l <= 0.5 ? l * (s + 1) : l + s - l * s;
-        var m1= l * 2 - m2;
-
-        this.r = hue(h + 1/3) * 255;
-        this.g = hue(h) * 255;
-        this.b = hue(h - 1/3) * 255;
-
-        return this.rgb();
-
-        function hue(h) {
-            h = h < 0 ? h + 1 : (h > 1 ? h - 1 : h);
-            if (h * 6 < 1) { return m1 + (m2 - m1) * h * 6; }
-            else if (h * 2 < 1) { return m2; }
-            else if (h * 3 < 2) { return m1 + (m2 - m1) * (2/3 - h) * 6; }
-            else return m1;
-        }
-
-    },
-
-    hsl: function() {
-        return { h: this.h, s: this.s, l: this.l, a: this.a };
-    },
-
-    rgb: function() {
-        return { r: this.r, g: this.g, b: this.b, a: this.a };
     }
-
-
 
 };

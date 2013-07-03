@@ -22,6 +22,18 @@ The JavaScript Canvas Library is a JavaScript helper library and an object-orien
 
 The library is available as a global name-spaced library, and a Require.js compatible module.
 
+Downloads
+---------
+
+**v1.0.0 (Stable Release)**
+- [Standard (Development- Unminified 29kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
+- [Standard (Production- Minified 9kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
+- [AMD Module (Unminified 29kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
+- [AMD Module (Production- Minified 9kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
+
+**v2.0.0a (Unstable Release)**
+- [Standard (Development- Unminified 29kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
+- [AMD Module (Development- Unminified 29kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
 
 JCL.Arc
 -------
@@ -189,28 +201,52 @@ JCL.utilities.randomInt(0,100);
 Change Log
 ----------
 
-**v1.0.0** (April 2, 2013)
-- Can pass an object with x,y,z properties into the JCL.Point constructor as the only argument.
-- Added JCL.drawCircles() to draw an array of circles, using the first element as the style template.
-- Removed the 'fullscreen' option from JCL.Canvas options.
-- Errors will now be thrown instead of using console.warn().
-- JCL.performance must now be enabled using JCL.performance.enable().
-- JCL.performance can not be disabled by calling JCL.performance.disable().
-- Renamed JCL object 'get()' function to 'toJSON()' to match convention.
-- Removed the 'createFragment()' function in utilities. Didn't fit with the library.
-- Removed JCL.Point/JCL.Rectangle's toString() function. No known use scenarios.
-- Set() commands will now retain the existing value if not overridden by the function.
-- Added unit tests.
+**v2.0.0** (Coming Soon)
+- Added: JCL.SVG class to manage SVG documents.
+- Added: JCL.SVG functions to create rectangle and circle SVG elements.
 
-**v0.1.0** (December 11, 2012)
+**v1.2.0** (TBD: ~July 7, 2013)
+- Added: JCL.VectorPoint class to calculate vectors.
+- Added: JCL.VectorPoint.add();
+- Added: JCL.VectorPoint.subtract();
+- Added: JCL.VectorPoint.scale();
+- Added: JCL.VectorPoint.length();
+- Added: JCL.VectorPoint.normalize();
+- Added: JCL.Particle class to simulate physical particles.
+- Added: JCL.Particle.update()
+
+**v1.1.2** (April 18, 2013)
+- Added: JCL.Point.round() to round the point to the nearest pixel.
+- Added: JCL.Point.crisp() to overcome the subpixel blurring on single pixel width lines.
+
+**v1.1.1** (April 8, 2013)
+- Added: JCL.Oval class to draw ovals.
+- Added: Optional 'copy' argument to JCL.Point.translate() to clone the point instead of changing the current point. (1.1.1)
+- Fixed: Bug with JCL.Point not recognizing the proper number of arguments with 5,0 coordinates. (1.1.1)
+
+**v1.0** (April 2, 2013)
+- Added: JCL.drawCircles() will draw an array of circles, using the first element as the style template.
+- Added: Unit tests.
+- Changed: Can pass an object with x,y,z properties into the JCL.Point constructor as the only argument.
+- Changed: Errors will now be thrown instead of using console.warn().
+- Changed: JCL.performance must now be enabled using JCL.performance.enable().
+- Changed: JCL.performance cannot be disabled by calling JCL.performance.disable().
+- Changed: Renamed JCL object 'get()' function to 'toJSON()' to match convention.
+- Changed: Set() commands will now retain the existing value if not overridden by the function.
+- Removed: 'fullscreen' is no longer a JCL.Canvas option.
+- Removed: 'createFragment()' is not longer a function in utilities. Didn't fit with the library.
+- Removed: JCL.Point/JCL.Rectangle no longer have a toString() function. No known use scenarios.
+
+**v0.1** (December 11, 2012)
 - Initial Release
 
 
 Roadmap
 -------
 
-**v1.2**
+**Upcoming**
+- Replicate Canvas Library to SVG.
+
+**To Be Determined**
 - Color object JCL.Color to easily convert and manipulate hex, string, rgb, and hsl.
 
-**v2.0**
-- Replicate Canvas Library to SVG.

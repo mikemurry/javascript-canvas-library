@@ -161,6 +161,22 @@ test('JCL.Point', function() {
     equal(a.y, 2, 'lerp() y');
     equal(a.z, 3, 'lerp() z');
 
+    b = a.translate(10,10,10,true);
+    equal(a.x, 1, 'copy lerp() a x');
+    equal(a.y, 2, 'copy lerp() a y');
+    equal(a.z, 3, 'copy lerp() a z');
+    equal(b.x, 11, 'copy lerp() b x');
+    equal(b.y, 12, 'copy lerp() b y');
+    equal(b.z, 13, 'copy lerp() b z');
+
+    b = a.translate(20, 20, true);
+    equal(a.x, 1, 'copy lerp() (no z) a x');
+    equal(a.y, 2, 'copy lerp() (no z) a y');
+    equal(a.z, 3, 'copy lerp() (no z) a z');
+    equal(b.x, 21, 'copy lerp() (no z) b x');
+    equal(b.y, 22, 'copy lerp() (no z) b y');
+    equal(b.z, 3, 'copy lerp() (no z) b z');
+
 });
 
 test('JCL.Rectangle', function() {
