@@ -206,14 +206,15 @@ Change Log
 - Added: JCL.SVG functions to create rectangle and circle SVG elements.
 
 **v1.2.0** (TBD: ~July 7, 2013)
-- Added: JCL.VectorPoint class to calculate vectors.
-- Added: JCL.VectorPoint.add();
-- Added: JCL.VectorPoint.subtract();
-- Added: JCL.VectorPoint.scale();
-- Added: JCL.VectorPoint.length();
-- Added: JCL.VectorPoint.normalize();
+- Added: Modified JCL.Point class to calculate vectors.
+- Added: JCL.Point.add()
+- Added: JCL.Point.subtract()
+- Added: JCL.Point.scale()
+- Added: JCL.Point.normalize()
 - Added: JCL.Particle class to simulate physical particles.
 - Added: JCL.Particle.update()
+- Changed: JCL.Point.distance() to include Z axis.
+
 
 **v1.1.2** (April 18, 2013)
 - Added: JCL.Point.round() to round the point to the nearest pixel.
