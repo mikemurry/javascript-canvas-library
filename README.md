@@ -1,6 +1,14 @@
 JCL - JavaScript Canvas Library
 ===============================
 
+Downloads
+---------
+- [Minified](jcl.min.js) (12kb) ([AMD Version](jcl-amd.min.js))
+- [Development](jcl.js) (28kb) ([AMD Version](jcl-amd.js))
+
+Getting Started
+---------------
+
 Overview
 --------
 
