@@ -3,34 +3,44 @@ JCL - JavaScript Canvas Library
 
 Downloads
 ---------
-- [Minified](jcl.min.js) (12kb) ([AMD Version](jcl-amd.min.js))
-- [Development](jcl.js) (28kb) ([AMD Version](jcl-amd.js))
+
+The library is available as a global name-spaced variable, and a Require.js compatible module.
+
+**Version 1.1.3**
+- [Minified](jcl.min.js) - 12kb ([AMD Version](jcl-amd.min.js))
+- [Development](jcl.js) - 28kb ([AMD Version](jcl-amd.js))
 
 Getting Started
 ---------------
 
-Overview
+After including the JCL script on your page, you can instantiate a canvas object and begin drawing.
+
+```javascript
+
+var circle = new JCL.Circle({
+   x: 50,
+   y: 50,
+   radius: 10,
+   fill: '#ccc',
+   stroke: '#000',
+   thickness: 3
+});
+
+var canvas = new JCL.Canvas('myCanvasId').drawCircle(circle);
+
+```
+
+Classes
 --------
 
-The JavaScript Canvas Library is a JavaScript helper library and an object-oriented approach to canvas visualizations. The library includes:
+- [Arc Class][arc]: *[JCL.Arc](lib/jcl.Arc.js)*
+- [Canvas Class][canvas]: *[JCL.Canvas](lib/jcl.Canvas.js)*
+- [Circle Class][circle]: *[JCL.Circle](lib/jcl.Circle.js)*
+- [Oval Class][oval]: *[JCL.Circle](lib/jcl.Oval.js)*
+- [Point Class][point]: *[JCL.Point](lib/jcl.Point.js)*
+- [Rectangle Class][rectangle]: *[JCL.Rectangle](lib/jcl.Rectangle.js)*
 
-**Classes**
-- Arc Class *(jcl.Arc)*
-- Canvas Class *(jcl.Canvas)*
-- Circle Class *(jcl.Circle)*
-- Point Class *(jcl.Point)*
-- Rectangle Class *(jcl.Rectangle)*
-
-**Managers**
-- Render Manager *(jcl.renderer)*
-- Performance Manager *(jcl.performance)*
-
-**Misc**
-- Utility Function Library *(jcl.utilities)*
-
-The library is available as a global name-spaced library, and a Require.js compatible module.
-
-JCL.Arc
+[arc]JCL.Arc
 -------
 
 Creates a new JCL.Arc instance. See the documentation for options.
@@ -51,7 +61,7 @@ var arc = new JCL.Arc({
 - render()
 
 
-JCL.Canvas
+[canvas]JCL.Canvas
 ----------
 
 Creates a new JCL.Canvas instance based on a canvas element. See the documentation for options and additional information.
@@ -80,7 +90,7 @@ var canvas = new JCL.Canvas('myCanvasId');
 - rotate()
 
 
-JCL.Circle
+[circle]JCL.Circle
 -------
 
 Creates a new JCL.Circle instance. See the documentation for options.
@@ -99,7 +109,7 @@ var arc = new JCL.Circle({
 - render()
 
 
-JCL.Rectangle
+[rectangle]JCL.Rectangle
 -------------
 
 Stores positioning and style information for a rectangle. The class also contains helper functions for the rectangle, such as specifying a center (pivot) point, and rounding points to the nearest pixel.
@@ -125,7 +135,7 @@ var rectangle = new JCL.Rectangle({
 - render()
 
 
-JCL.Point
+[point]JCL.Point
 ---------
 
 Stores a 2d (or 3d) point. Also provides functions to translate, calculate tangents, and interpolate between two points.
@@ -196,15 +206,8 @@ JCL.utilities.randomInt(0,100);
 Change Log
 ----------
 
-**v1.2.0** (TBD: July 7, 2013)
-- Added: JCL.VectorPoint class to calculate vectors.
-- Added: JCL.VectorPoint.add();
-- Added: JCL.VectorPoint.subtract();
-- Added: JCL.VectorPoint.scale();
-- Added: JCL.VectorPoint.length();
-- Added: JCL.VectorPoint.normalize();
-- Added: JCL.Particle class to simulate physical particles.
-- Added: JCL.Particle.update()
+**v1.1.3** (July 31, 2013)
+- Rolled back original v1.2 changes after deciding they were outside the scope of this project.
 
 **v1.1.2** (April 18, 2013)
 - Added: JCL.Point.round() to round the point to the nearest pixel.
@@ -230,14 +233,4 @@ Change Log
 
 **v0.1** (December 11, 2012)
 - Initial Release
-
-
-Roadmap
--------
-
-**Upcoming**
-- Replicate Canvas Library to SVG.
-
-**To Be Determined**
-- Color object JCL.Color to easily convert and manipulate hex, string, rgb, and hsl.
 

@@ -5,7 +5,7 @@ define(function() {
 
 var JCL = JCL || {
 
-    VERSION: '1.2.0'
+    VERSION: '1.1.3'
 
 };/**
  * @namespace JCL.utilities
@@ -754,65 +754,6 @@ JCL.Point.prototype = {
         return this.set(this.x + (x || 0), this.y + (y || 0), this.z + (z || 0));
     }
 
-};JCL.VectorPoint = function (x, y, z) {
-
-    if (arguments.length === 1) {
-        z = x.z || 0;
-        y = x.y || 0;
-        x = x.x || 0;
-    }
-
-    return this.set(x,y,z);
-
-};
-
-JCL.VectorPoint.prototype = JCL.Point.prototype;
-
-JCL.VectorPoint.prototype.add = function(V) {
-    this.x += V.x;
-    this.y += V.y;
-    this.z += V.z;
-    return this;
-};
-
-JCL.VectorPoint.prototype.subtract = function(V) {
-    this.x -= V.x;
-    this.y -= V.y;
-    this.z -= V.z;
-    return this;
-};
-
-JCL.VectorPoint.prototype.scale = function(V) {
-
-    if (typeof V === 'number') {
-        var num = V;
-        V = {
-            x: num,
-            y: num,
-            z: num
-        }
-    }
-
-    this.x *= V.x;
-    this.y *= V.y;
-    this.z *= V.z;
-
-    return this;
-
-};
-
-JCL.VectorPoint.prototype.length = function() {
-    return Math.sqrt((this.x * this.x) + (this.y * this.y) + (this.z * this.z));
-};
-
-JCL.VectorPoint.prototype.normalize = function() {
-    var inverse = 1 / this.length();
-    this.scale(inverse);
-    return this;
-};
-
-JCL.VectorPoint.prototype.clone = function() {
-    return new JCL.VectorPoint(this.x, this.y, this.z);
 };
 /**
  * @class
@@ -1120,32 +1061,6 @@ JCL.Oval.prototype = {
         if (canvas instanceof JCL.Canvas) { canvas.drawOval(this); }
         else { JCL.error("Specified canvas is not an instance of JCL.Canvas."); }
         return this;
-    }
-
-};JCL.Particle = function(options) {
-
-    options = options || {};
-
-    this.mass = options.mass || 1;
-
-    this.position = options.position || new JCL.Point(0,0);
-    this.velocity = new JCL.VectorPoint(0,0);
-    this.force = new JCL.VectorPoint(0,0);
-
-};
-
-JCL.Particle.prototype = {
-
-    update: function(delta) {
-
-        this.velocity.x += this.force.x * delta;
-        this.velocity.y += this.force.y * delta;
-        this.velocity.z += this.force.z * delta;
-
-        this.position.x += this.velocity.x * delta;
-        this.position.y += this.velocity.y * delta;
-        this.position.z += this.velocity.z * delta;
-
     }
 
 }; return JCL; });
