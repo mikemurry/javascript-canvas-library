@@ -22,19 +22,6 @@ The JavaScript Canvas Library is a JavaScript helper library and an object-orien
 
 The library is available as a global name-spaced library, and a Require.js compatible module.
 
-Downloads
----------
-
-**v1.0.0 (Stable Release)**
-- [Standard (Development- Unminified 29kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
-- [Standard (Production- Minified 9kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
-- [AMD Module (Unminified 29kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
-- [AMD Module (Production- Minified 9kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
-
-**v2.0.0a (Unstable Release)**
-- [Standard (Development- Unminified 29kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
-- [AMD Module (Development- Unminified 29kb)](http://jcl.mikemurry.com/downloads/jcl-1.0.0.js)
-
 JCL.Arc
 -------
 
@@ -201,11 +188,7 @@ JCL.utilities.randomInt(0,100);
 Change Log
 ----------
 
-**v2.0.0** (Coming Soon)
-- Added: JCL.SVG class to manage SVG documents.
-- Added: JCL.SVG functions to create rectangle and circle SVG elements.
-
-**v1.2.0** (TBD: ~July 7, 2013)
+**v1.2.0** (TBD: July 7, 2013)
 - Added: JCL.VectorPoint class to calculate vectors.
 - Added: JCL.VectorPoint.add();
 - Added: JCL.VectorPoint.subtract();

@@ -810,6 +810,10 @@ JCL.VectorPoint.prototype.normalize = function() {
     this.scale(inverse);
     return this;
 };
+
+JCL.VectorPoint.prototype.clone = function() {
+    return new JCL.VectorPoint(this.x, this.y, this.z);
+};
 /**
  * @class
  * @classdesc The rectangle class stores position and style properties for drawing rectangles.
@@ -1125,7 +1129,7 @@ JCL.Oval.prototype = {
     this.mass = options.mass || 1;
 
     this.position = options.position || new JCL.Point(0,0);
-    this.velocity = new JCL.Point(0,0);
+    this.velocity = new JCL.VectorPoint(0,0);
     this.force = new JCL.VectorPoint(0,0);
 
 };
