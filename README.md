@@ -161,8 +161,8 @@ var arc = new JCL.Circle({
 - render()
 
 
-[rectangle]JCL.Rectangle
--------------
+<a name="rectangle"></a>JCL.Rectangle
+-------------------------------------
 
 Stores positioning and style information for a rectangle. The class also contains helper functions for the rectangle, such as specifying a center (pivot) point, and rounding points to the nearest pixel.
 
@@ -187,10 +187,10 @@ var rectangle = new JCL.Rectangle({
 - render()
 
 
-<a name="arc"></a>JCL.Point
----------
+<a name="point"></a>JCL.Point
+-----------------------------
 
-Stores a 2d point. Also provides functions to translate, calculate tangents, and interpolate between two points.
+Stores a point. Provides functions to translate, calculate tangents, and interpolate between two points.
 
 ```javascript
 var point = new JCL.Point(0,10);
@@ -200,20 +200,23 @@ var point = new JCL.Point(0,10);
 - **x** (number) - The x coordinate of the point.
 - **y** (number) - The y coordinate of the point.
 
-**JCL.Point.set(*x*,*y*)**
+**JCL.Point.set(x,y)**
+Updates the coordinates of the point.
 
 ```javascript
 point.set(5,15);
 ```
 
 **JCL.Point.toJSON()**
+Returns a simple object representing the coordinates.
 
 ```javascript
 var simple = point.toJSON();
 // simple = { x: 5, y: 15 };
 ```
 
-**JCL.Point.distance(*otherPoint*)**
+**JCL.Point.distance(otherPoint)**
+Calculates the distance between this and another JCL.Point.
 
 ```javascript
 var pointA = new JCL.Point(0,10);
@@ -222,7 +225,8 @@ var distance = pointA.distance(pointB);
 // distance = 7.0710678118654755;
 ```
 
-**JCL.Point.angle(*otherPoint*)**
+**JCL.Point.angle(otherPoint)**
+Calculates the angle connecting this and another JCL.Point.
 
 ```javascript
 var pointA = new JCL.Point(0,10);
@@ -233,7 +237,8 @@ var degrees = JCL.utilities.degrees(radians);
 // degrees = 45;
 ```
 
-**JCL.Point.tangent(*degrees*, *distance*)**
+**JCL.Point.tangent(degrees, distance)**
+Returns a point at the specified angle and distance from the point.
 
 ```javascript
 var pointA = new JCL.Point(0,0);
@@ -241,7 +246,8 @@ var pointB = pointA.tangent(45, 10);
 // pointB = { x: 7.0710678118654755, y: 7.071067811865475 }
 ```
 
-**JCL.Point.lerp(*a*, *ratio*)**
+**JCL.Point.lerp(a, ratio)**
+Interpolates a third point at the specified ratio between this and another point.
 
 ```javascript
 var pointA = new JCL.Point(10,50);
@@ -250,7 +256,24 @@ var pointC = pointA.lerp(pointB,.5);
 // pointC = { x: 10, y: 75 }
 ```
 
-**JCL.Point.translate(*x*, *y*)**
+**JCL.Point.round**()
+Rounds the coordinates of a point to the nearest pixel.
+
+```javascript
+var point = new JCL.Point(4.6384, 8.2165).round();
+// point = { x: 4, y: 8 }
+```
+
+**JCL.Point.crisp**()
+Adjusts for sub-pixel blurring by centering the point around a pixel.
+
+```javascript
+var point = new JCL.Point(4,8).crisp();
+// point = { x: 3.5, y: 7.5 }
+```
+
+**JCL.Point.translate(x, y)**
+Moves a point by the specified coordinates, optionally returning a new instance.
 
 ```javascript
 var point = new JCL.Point(10, 50);
