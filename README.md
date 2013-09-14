@@ -60,18 +60,20 @@ var arc = new JCL.Arc({
 ```
 
 **Options**
-- [ ] center (JCL.Point) - A JCL.Point instance indicating the arc's center.
-- [ ] x (number) - The x coordinate of the arc's center.
-- [ ] y (number) - The y coordinate of the arc's center.
-- [ ] radius (number) - The radius of the arc, in pixels.
-- [ ] fill (string) - The color to fill the arc.
-- [ ] stroke (string) - The color to stroke the border of the arc.
-- [ ] thickness (number) - The thickness of the arc's border, in pixels.
-- [ ] start (number) - The starting angle of the arc, in degrees.
-- [ ] end (number) - The ending angle of the arc, in degrees.
+- **center** (JCL.Point) - A JCL.Point instance indicating the arc's center.
+- **x** (number) - The x coordinate of the arc's center.
+- **y** (number) - The y coordinate of the arc's center.
+- **radius** (number) - The radius of the arc, in pixels.
+- **fill** (string) - The color to fill the arc.
+- **stroke** (string) - The color to stroke the border of the arc.
+- **thickness** (number) - The thickness of the arc's border, in pixels.
+- **start** (number) - The starting angle of the arc, in degrees.
+- **end** (number) - The ending angle of the arc, in degrees.
 
 **Functions**
 - render(canvas)
+
+*[Source: lib/jcl.Arc.js](lib/jcl.Arc.js)*
 
 
 [canvas]JCL.Canvas
