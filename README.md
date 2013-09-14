@@ -8,7 +8,7 @@ Downloads
 
 The library is available as a global name-spaced variable, and a Require.js compatible module.
 
-**Version 1.1.3**
+**Version 1.1.4**
 - [Minified](jcl.min.js) ([as AMD module](jcl-amd.min.js)) - 12kb
 - [Source](jcl.js) ([as AMD module](jcl-amd.js)) - 28kb
 
@@ -48,54 +48,6 @@ Helpers
 - [performance](#performance)
 - [renderer](#renderer)
 - [utilities](#utilities)
-
-<a name="arc"></a>JCL.Arc
--------------------------
-
-Creates a new JCL.Arc instance. An arc is a circle sliced between two angles.
-
-```javascript
-var arc = new JCL.Arc({
-   center: { x: 10, y: 50 },
-   radius: 12,
-   fill: 'rgba(212,0,0,.75)',
-   stroke: 'black',
-   thickness: 2,
-   start: 0,
-   end: 90
-}).render(canvas);
-```
-
-**Arguments**
-- **options** (object) - Optional parameters.
-
-**Options**
-- **center** (JCL.Point) - A JCL.Point instance indicating the arc's center.
-- **x** (number) - The x coordinate of the arc's center.
-- **y** (number) - The y coordinate of the arc's center.
-- **radius** (number) - The radius of the arc, in pixels.
-- **fill** (string) - The color to fill the arc.
-- **stroke** (string) - The color to stroke the border of the arc.
-- **thickness** (number) - The thickness of the arc's border, in pixels.
-- **start** (number) - The starting angle of the arc, in degrees.
-- **end** (number) - The ending angle of the arc, in degrees.
-
-**JCL.Arc.render**(canvas)
-
-Draws the arc on the JCL.Canvas.
-
-```javascript
-var canvas = new JCL.Canvas('myCanvasId');
-var arc = new JCL.Arc({
-   center: new JCL.Point(5,10),
-   radius: 3,
-   fill: 'red',
-   start: 0,
-   end: 45
-}).render(canvas);
-```
-
-*[**Source:** lib/jcl.Arc.js](lib/jcl.Arc.js)*
 
 
 <a name="canvas"></a>JCL.Canvas
@@ -162,6 +114,7 @@ var path = [
     new JCL.Point(25,0)
 ];
 canvas.drawShape(path, 'cyan', '#000', 3);
+```
 
 **JCL.Canvas.drawHaystack**(lines, stroke, thickness)
 
@@ -231,6 +184,56 @@ canvas.clear();
 ```
 
 *[**Source:** lib/jcl.Canvas.js](lib/jcl.Canvas.js)*
+
+<a name="arc"></a>JCL.Arc
+-------------------------
+
+Creates a new JCL.Arc instance. An arc is a circle sliced between two angles.
+
+```javascript
+var arc = new JCL.Arc({
+   center: { x: 10, y: 50 },
+   radius: 12,
+   fill: 'rgba(212,0,0,.75)',
+   stroke: 'black',
+   thickness: 2,
+   start: 0,
+   end: 90
+}).render(canvas);
+```
+
+**Arguments**
+- **options** (object) - Optional parameters.
+
+**Options**
+- **center** (JCL.Point) - A JCL.Point instance indicating the arc's center.
+- **x** (number) - The x coordinate of the arc's center.
+- **y** (number) - The y coordinate of the arc's center.
+- **radius** (number) - The radius of the arc, in pixels.
+- **fill** (string) - The color to fill the arc.
+- **stroke** (string) - The color to stroke the border of the arc.
+- **thickness** (number) - The thickness of the arc's border, in pixels.
+- **start** (number) - The starting angle of the arc, in degrees.
+- **end** (number) - The ending angle of the arc, in degrees.
+
+**JCL.Arc.render**(canvas)
+
+Draws the arc on the JCL.Canvas.
+
+```javascript
+var canvas = new JCL.Canvas('myCanvasId');
+var arc = new JCL.Arc({
+   center: new JCL.Point(5,10),
+   radius: 3,
+   fill: 'red',
+   start: 0,
+   end: 45
+}).render(canvas);
+```
+
+*[**Source:** lib/jcl.Arc.js](lib/jcl.Arc.js)*
+
+
 
 
 <a name="circle"></a>JCL.Circle
@@ -529,18 +532,16 @@ Provides performance metrics such as frames per second, elapsed time per frame, 
 
 ```javascript
 JCL.performance.enable();
-JCL.delta();
+JCL.performance.delta();
+JCL.performance.elapsed();
+JCL.performance.fps();
+JCL.performance.disable();
 ```
 
-**Functions:**
-- enable()
-- disable()
-- delta()
-- elapsed()
-- fps()
+*[**Source:** lib/jcl.performance.js](lib/jcl.performance.js)*
 
 
-JCL.render
+JCL.renderer
 ----------
 
 Allows adding or removing callback functions to the render loop.
@@ -550,29 +551,58 @@ JCL.render.add(myRenderFunction);
 JCL.render.remove(0);
 ```
 
-**Functions:**
-- add()
-- remove()
+*[**Source:** lib/jcl.renderer.js](lib/jcl.renderer.js)*
 
 
 JCL.utilities
 -------------
 
-A library of useful functions.
+A collection of helper functions.
+
+**JCL.utilities.randomInt**(min, max)**
+
+Returns an integer between the specified minimum (inclusive) and maximum (exclusive).
 
 ```javascript
 JCL.utilities.randomInt(0,100);
 ```
 
-**Functions:**
-- randomInt()
-- radians()
-- degrees()
-- bounds()
+**JCL.utilities.radians**(degrees)**
+
+Converts degrees into radians.
+
+```javascript
+JCL.utilities.radians(45);
+// returns 0.7853981633974483
+```
+
+**JCL.utilities.degrees**(radians)**
+
+Converts radians into degrees.
+
+```javascript
+JCL.utilities.degrees(0.7853981633974483);
+// returns 45
+```
+
+**JCL.utilities.bounds**(array)**
+
+Returns the minimum and maximum value for a given collection.
+
+```javascript
+JCL.utilities.bounds([1,2,3,4,5,6,7,8,9]);
+// returns { min:1, max:9 }
+```
+
+*[**Source:** lib/jcl.utilities.js](lib/jcl.utilities.js)*
 
 
 Change Log
 ----------
+
+**v1.1.4** (September 14, 2013)
+- Removed: Remaining infrastructure for the z axis. Out of scope.
+- Improved documentation.
 
 **v1.1.3** (July 31, 2013)
 - Rolled back original v1.2 changes after deciding they were outside the scope of this project.

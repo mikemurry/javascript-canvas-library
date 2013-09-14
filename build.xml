@@ -3,7 +3,7 @@
 <project name="JCLBuild" default="dist">
 
     <property name="includes" value="jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.performance.js, jcl.Canvas.js, jcl.Point.js, jcl.Rectangle.js, jcl.Circle.js, jcl.Arc.js, jcl.Oval.js" />
-    <property name="includes-amd" value="../wrapper/amd-start.js, jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.performance.js, jcl.Canvas.js, jcl.Point.js, jcl.Rectangle.js, jcl.Circle.js, jcl.Arc.js, jcl.Oval.js, ../wrapper/amd-end.js" />
+    <property name="includes-amd" value="wrapper/amd-start.js, jcl.js, jcl.utilities.js, jcl.renderer.js, jcl.performance.js, jcl.Canvas.js, jcl.Point.js, jcl.Rectangle.js, jcl.Circle.js, jcl.Arc.js, jcl.Oval.js, wrapper/amd-end.js" />
 
     <target name="prepare">
         <delete dir="temp" />
@@ -48,11 +48,7 @@
 
     </target>
 
-    <target name="document" depends="build">
-        <exec command="C:\phing\tools\jsdoc3\jsdoc jcl.js --destination docs" />
-    </target>
-
-    <target name="dist" depends="document">
+    <target name="dist" depends="build">
         <delete dir="temp" />
     </target>
 

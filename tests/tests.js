@@ -128,20 +128,17 @@ test('JCL.Point', function() {
     ok(a instanceof JCL.Point);
     equal(a.x, 0, 'Default x.');
     equal(a.y, 0, 'Default y.');
-    equal(a.z, 0, 'Default z.');
     deepEqual(a, new JCL.Point(0,0), 'Default object.');
 
     b = new JCL.Point(100, 200);
     equal(b.x, 100, 'Custom x.');
     equal(b.y, 200, 'Custom y.');
-    equal(b.z, 0, 'Custom z.');
 
     b.set(50, 75, 25);
     equal(b.x, 50, 'set() x.');
     equal(b.y, 75, 'set() y.');
-    equal(b.z, 25, 'set() z.');
 
-    deepEqual(b.toJSON(), { x: 50, y: 75, z: 25 }, 'get()');
+    deepEqual(b.toJSON(), { x: 50, y: 75 }, 'get()');
     equal(a.distance(b).toFixed(2), '90.14', 'distance()');
     equal(a.angle(b).toFixed(2), '0.98', 'angle()');
 
@@ -156,26 +153,15 @@ test('JCL.Point', function() {
     equal(t.x, 12.5, 'lerp() x');
     equal(t.y, 18.75, 'lerp() y');
 
-    a.translate(1,2,3);
+    a.translate(1,2);
     equal(a.x, 1, 'lerp() x');
     equal(a.y, 2, 'lerp() y');
-    equal(a.z, 3, 'lerp() z');
 
-    b = a.translate(10,10,10,true);
+    b = a.translate(10 ,10,true);
     equal(a.x, 1, 'copy lerp() a x');
     equal(a.y, 2, 'copy lerp() a y');
-    equal(a.z, 3, 'copy lerp() a z');
     equal(b.x, 11, 'copy lerp() b x');
     equal(b.y, 12, 'copy lerp() b y');
-    equal(b.z, 13, 'copy lerp() b z');
-
-    b = a.translate(20, 20, true);
-    equal(a.x, 1, 'copy lerp() (no z) a x');
-    equal(a.y, 2, 'copy lerp() (no z) a y');
-    equal(a.z, 3, 'copy lerp() (no z) a z');
-    equal(b.x, 21, 'copy lerp() (no z) b x');
-    equal(b.y, 22, 'copy lerp() (no z) b y');
-    equal(b.z, 3, 'copy lerp() (no z) b z');
 
 });
 
