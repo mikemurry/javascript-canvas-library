@@ -42,7 +42,7 @@ Classes
 - [Point Class](#point): *[lib/JCL.Point.js](lib/jcl.Point.js)*
 - [Rectangle Class](#rectangle): *[lib/JCL.Rectangle.js](lib/jcl.Rectangle.js)*
 
-[arc]JCL.Arc
+JCL.Arc [arc]
 -------
 
 Creates a new JCL.Arc instance. See the documentation for options.
