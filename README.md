@@ -35,17 +35,24 @@ var canvas = new JCL.Canvas('myCanvasId').drawCircle(circle);
 Classes
 -------
 
-- [Arc Class](#arc): *[lib/JCL.Arc.js](lib/jcl.Arc.js)*
-- [Canvas Class](#canvas): *[lib/JCL.Canvas.js](lib/jcl.Canvas.js)*
-- [Circle Class](#circle): *[lib/JCL.Circle.js](lib/jcl.Circle.js)*
-- [Oval Class](#oval): *[lib/JCL.Circle.js](lib/jcl.Oval.js)*
-- [Point Class](#point): *[lib/JCL.Point.js](lib/jcl.Point.js)*
-- [Rectangle Class](#rectangle): *[lib/JCL.Rectangle.js](lib/jcl.Rectangle.js)*
+- [Arc](#arc)
+- [Canvas](#canvas)
+- [Circle](#circle)
+- [Oval](#oval)
+- [Point](#point)
+- [Rectangle](#rectangle)
+
+Helpers
+-------
+
+- [performance](#performance)
+- [renderer](#renderer)
+- [utilities](#utilities)
 
 <a name="arc"></a>JCL.Arc
 -------------------------
 
-Creates a new JCL.Arc instance. See the documentation for options.
+Creates a new JCL.Arc instance. An arc is a circle sliced between two angles.
 
 ```javascript
 var arc = new JCL.Arc({
@@ -58,6 +65,9 @@ var arc = new JCL.Arc({
    end: 90
 }).render(canvas);
 ```
+
+**Arguments**
+- **options** (object) - Optional parameters.
 
 **Options**
 - **center** (JCL.Point) - A JCL.Point instance indicating the arc's center.
@@ -73,20 +83,47 @@ var arc = new JCL.Arc({
 **Functions**
 - render(canvas)
 
-*[Source: lib/jcl.Arc.js](lib/jcl.Arc.js)*
+*[**Source:** lib/jcl.Arc.js](lib/jcl.Arc.js)*
 
 
-[canvas]JCL.Canvas
-----------
+<a name="canvas"></a>JCL.Canvas
+-------------------------------
 
-Creates a new JCL.Canvas instance based on a canvas element. See the documentation for options and additional information.
+Creates a new JCL.Canvas instance based on a canvas element.
 
 ```javascript
 var canvas = new JCL.Canvas('myCanvasId');
 ```
 
-**Functions:**
-- drawRectangle()
+**Arguments**
+- **id** (string|element) - The element ID or reference to the canvas element.
+- **options** (object) - Optional parameters.
+
+**Options**
+- **width** (number) - Set the element's width.
+- **height** (number) - Sets the element's height.
+- **zindex** (number) - Sets the element's z-index.
+
+**Properties**
+- **enabled** (boolean) - If the canvas object is valid and able to draw.
+- **width** (number) - The width of the canvas element.
+- **height** (number) - The height of the canvas element.
+
+**JCL.Canvas.draw(object)**
+
+Draws the supplied object, relying on the object's render function.
+
+**JCL.Canvas.drawRectangle(JCL.Rectangle)**
+
+Draws a JCL.Rectangle object.
+
+```javascript
+var myRectangle = new JCL.Rectangle({ width: 10, height: 10, x: 10, y: 10, fill: 'black' });
+canvas.drawRectangle(myRectangle);
+```
+
+**JCL.Canvas.drawPath(path, color, thickness)**
+
 - drawPath()
 - drawShape()
 - drawHaystack()
@@ -150,23 +187,76 @@ var rectangle = new JCL.Rectangle({
 - render()
 
 
-[point]JCL.Point
+<a name="arc"></a>JCL.Point
 ---------
 
-Stores a 2d (or 3d) point. Also provides functions to translate, calculate tangents, and interpolate between two points.
+Stores a 2d point. Also provides functions to translate, calculate tangents, and interpolate between two points.
 
 ```javascript
 var point = new JCL.Point(0,10);
 ```
 
-**Functions:**
-- set()
-- toJSON()
-- distance()
-- angle()
-- tangent()
-- lerp()
-- translate()
+**Arguments**
+- **x** (number) - The x coordinate of the point.
+- **y** (number) - The y coordinate of the point.
+
+**JCL.Point.set(*x*,*y*)**
+
+```javascript
+point.set(5,15);
+```
+
+**JCL.Point.toJSON()**
+
+```javascript
+var simple = point.toJSON();
+// simple = { x: 5, y: 15 };
+```
+
+**JCL.Point.distance(*otherPoint*)**
+
+```javascript
+var pointA = new JCL.Point(0,10);
+var pointB = new JCL.Point(5,15);
+var distance = pointA.distance(pointB);
+// distance = 7.0710678118654755;
+```
+
+**JCL.Point.angle(*otherPoint*)**
+
+```javascript
+var pointA = new JCL.Point(0,10);
+var pointB = new JCL.Point(5,15);
+var radians = pointA.angle(pointB);
+// radians = 0.7853981633974483;
+var degrees = JCL.utilities.degrees(radians);
+// degrees = 45;
+```
+
+**JCL.Point.tangent(*degrees*, *distance*)**
+
+```javascript
+var pointA = new JCL.Point(0,0);
+var pointB = pointA.tangent(45, 10);
+// pointB = { x: 7.0710678118654755, y: 7.071067811865475 }
+```
+
+**JCL.Point.lerp(*a*, *ratio*)**
+
+```javascript
+var pointA = new JCL.Point(10,50);
+var pointB = new JCL.Point(10,100);
+var pointC = pointA.lerp(pointB,.5);
+// pointC = { x: 10, y: 75 }
+```
+
+**JCL.Point.translate(*x*, *y*)**
+
+```javascript
+var point = new JCL.Point(10, 50);
+point.translate(10, -20);
+// point = { x: 20, y: 30 }
+```
 
 
 JCL.performance
