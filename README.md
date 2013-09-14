@@ -1,7 +1,7 @@
 JavaScript Canvas Library
 =========================
 
-JCL is an object-oriented approach to working with HTML5 canvas elements.
+JCL is a light-weight object-oriented library for working with HTML5 canvas elements.
 
 Downloads
 ---------
@@ -10,7 +10,7 @@ The library is available as a global name-spaced variable, and a Require.js comp
 
 **Version 1.1.4**
 - [Minified](jcl.min.js) ([as AMD module](jcl-amd.min.js)) - 12kb
-- [Source](jcl.js) ([as AMD module](jcl-amd.js)) - 28kb
+- [Source](jcl.js) ([as AMD module](jcl-amd.js)) - 24kb
 
 Getting Started
 ---------------
