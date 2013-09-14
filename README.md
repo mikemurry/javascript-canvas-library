@@ -42,8 +42,8 @@ Classes
 - [Point Class](#point): *[lib/JCL.Point.js](lib/jcl.Point.js)*
 - [Rectangle Class](#rectangle): *[lib/JCL.Rectangle.js](lib/jcl.Rectangle.js)*
 
-JCL.Arc <a name="arc"></a>
---------------------------
+<a name="arc"></a>JCL.Arc
+-------------------------
 
 Creates a new JCL.Arc instance. See the documentation for options.
 
@@ -59,8 +59,19 @@ var arc = new JCL.Arc({
 }).render(canvas);
 ```
 
+**Options**
+- [ ] center (JCL.Point) - A JCL.Point instance indicating the arc's center.
+- [ ] x (number) - The x coordinate of the arc's center.
+- [ ] y (number) - The y coordinate of the arc's center.
+- [ ] radius (number) - The radius of the arc, in pixels.
+- [ ] fill (string) - The color to fill the arc.
+- [ ] stroke (string) - The color to stroke the border of the arc.
+- [ ] thickness (number) - The thickness of the arc's border, in pixels.
+- [ ] start (number) - The starting angle of the arc, in degrees.
+- [ ] end (number) - The ending angle of the arc, in degrees.
+
 **Functions**
-- render()
+- render(canvas)
 
 
 [canvas]JCL.Canvas
