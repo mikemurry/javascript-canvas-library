@@ -33,7 +33,7 @@ var canvas = new JCL.Canvas('myCanvasId').drawCircle(circle);
 ```
 
 Classes
---------
+-------
 
 - [Arc Class](#arc): *[lib/JCL.Arc.js](lib/jcl.Arc.js)*
 - [Canvas Class](#canvas): *[lib/JCL.Canvas.js](lib/jcl.Canvas.js)*
@@ -42,8 +42,8 @@ Classes
 - [Point Class](#point): *[lib/JCL.Point.js](lib/jcl.Point.js)*
 - [Rectangle Class](#rectangle): *[lib/JCL.Rectangle.js](lib/jcl.Rectangle.js)*
 
-JCL.Arc [arc]
--------
+JCL.Arc <a name="arc"></a>
+--------------------------
 
 Creates a new JCL.Arc instance. See the documentation for options.
 
