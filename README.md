@@ -1,5 +1,7 @@
-JCL - JavaScript Canvas Library
-===============================
+JavaScript Canvas Library
+=========================
+
+JCL is an object-oriented approach to working with HTML5 canvas elements.
 
 Downloads
 ---------
@@ -7,16 +9,16 @@ Downloads
 The library is available as a global name-spaced variable, and a Require.js compatible module.
 
 **Version 1.1.3**
-- [Minified](jcl.min.js) - 12kb ([AMD Version](jcl-amd.min.js))
-- [Development](jcl.js) - 28kb ([AMD Version](jcl-amd.js))
+- [Minified](jcl.min.js) ([as AMD module](jcl-amd.min.js)) - 12kb
+- [Source](jcl.js) ([as AMD module](jcl-amd.js)) - 28kb
 
 Getting Started
 ---------------
 
-After including the JCL script on your page, you can instantiate a canvas object and begin drawing.
+After downloading and including the JCL script on your page, you can instantiate a canvas object and begin drawing.
 
 ```javascript
-
+// Instantiate a new Circle class.
 var circle = new JCL.Circle({
    x: 50,
    y: 50,
@@ -26,19 +28,19 @@ var circle = new JCL.Circle({
    thickness: 3
 });
 
+// Instantiate the Canvas class and draw the circle.
 var canvas = new JCL.Canvas('myCanvasId').drawCircle(circle);
-
 ```
 
 Classes
 --------
 
-- [Arc Class][arc]: *[JCL.Arc](lib/jcl.Arc.js)*
-- [Canvas Class][canvas]: *[JCL.Canvas](lib/jcl.Canvas.js)*
-- [Circle Class][circle]: *[JCL.Circle](lib/jcl.Circle.js)*
-- [Oval Class][oval]: *[JCL.Circle](lib/jcl.Oval.js)*
-- [Point Class][point]: *[JCL.Point](lib/jcl.Point.js)*
-- [Rectangle Class][rectangle]: *[JCL.Rectangle](lib/jcl.Rectangle.js)*
+- [Arc Class](#arc): *[lib/JCL.Arc.js](lib/jcl.Arc.js)*
+- [Canvas Class](#canvas): *[lib/JCL.Canvas.js](lib/jcl.Canvas.js)*
+- [Circle Class](#circle): *[lib/JCL.Circle.js](lib/jcl.Circle.js)*
+- [Oval Class](#oval): *[lib/JCL.Circle.js](lib/jcl.Oval.js)*
+- [Point Class](#point): *[lib/JCL.Point.js](lib/jcl.Point.js)*
+- [Rectangle Class](#rectangle): *[lib/JCL.Rectangle.js](lib/jcl.Rectangle.js)*
 
 [arc]JCL.Arc
 -------
