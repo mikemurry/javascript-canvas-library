@@ -54,6 +54,8 @@ JCL.utilities = {
     }
 
 };
+
+
 JCL.renderer = (function() {
 
     var _list, _len, _enabled;
@@ -116,6 +118,8 @@ JCL.renderer = (function() {
     }
 
 }());
+
+
 JCL.performance = (function() {
 
     var _isInit, _last, _delta, _fps, _elapsed;
@@ -191,8 +195,7 @@ JCL.performance = (function() {
     }
 
 }());
-/* JCL.Canvas */
-/* The canvas class creates a platform for all draw calls. */
+
 
 JCL.Canvas = function(canvasId, options) {
 
@@ -553,7 +556,9 @@ JCL.Canvas.prototype = {
         return this;
     }
 
-};JCL.Point = function (x, y) {
+};
+
+JCL.Point = function (x, y) {
 
     if (arguments.length === 1) {
         y = x.y || 0;
@@ -662,7 +667,9 @@ JCL.Point.prototype = {
         return this.set(this.x + (x || 0), this.y + (y || 0));
     }
 
-};JCL.Rectangle = function(options) {
+};
+
+JCL.Rectangle = function(options) {
 
     options = options || {};
 
@@ -724,7 +731,9 @@ JCL.Rectangle.prototype = {
         return this;
     }
 
-};JCL.Circle = function(options) {
+};
+
+JCL.Circle = function(options) {
 
     options = options || {};
 
@@ -755,7 +764,9 @@ JCL.Circle.prototype = {
         return this;
     }
 
-};JCL.Arc = function(options) {
+};
+
+JCL.Arc = function(options) {
 
     options = options || {};
 
@@ -786,7 +797,9 @@ JCL.Arc.prototype = {
         return this;
     }
 
-};JCL.Oval = function(options) {
+};
+
+JCL.Oval = function(options) {
 
     options = options || {};
 
@@ -838,4 +851,6 @@ JCL.Oval.prototype = {
         return this;
     }
 
-}; return JCL; });
+};
+
+ return JCL; });
